@@ -1,10 +1,15 @@
 """Prepare the SDXL prompt and two grayscale conditioning masks for an open book."""
 
 from dataclasses import dataclass
+from itertools import islice
 import json
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
+
+
+class TextDoesNotFit(ValueError):
+    """The text cannot be printed inside the given rectangle at this size."""
 
 
 @dataclass(frozen=True)
@@ -59,12 +64,38 @@ def build_condition(sentence: str) -> BookCondition:
     )
 
 
-def _lines(text: str, font: ImageFont.FreeTypeFont, width: int) -> list[str]:
+def _wrap_paragraphs(paragraphs, fits):
+    for paragraph in paragraphs:
+        line = ""
+        for word in paragraph.split():
+            candidate = f"{line} {word}" if line else word
+            if fits(candidate):
+                line = candidate
+                continue
+            if line:
+                yield line
+            line = word
+            if not fits(word):
+                line = ""
+                for char in word:
+                    if not fits(line + char):
+                        if not line or not fits(char):
+                            raise TextDoesNotFit("A character exceeds the available print width.")
+                        yield line
+                        line = ""
+                    line += char
+        yield line
+
+
+def _lines(text: str, font: ImageFont.FreeTypeFont, width: int, *, multiline: bool, max_lines: int) -> list[str]:
     def fits(line: str) -> bool:
         left, _, right, _ = font.getbbox(line)
         return max(font.getlength(line), right) - min(left, 0) <= width
 
     explicit = text.split("\n")
+    if multiline:
+        return list(islice(_wrap_paragraphs(explicit, fits), max_lines + 1))
+
     if len(explicit) <= 2 and all(fits(line) for line in explicit):
         return explicit
     if len(explicit) == 1:
@@ -73,24 +104,26 @@ def _lines(text: str, font: ImageFont.FreeTypeFont, width: int) -> list[str]:
             if char != " ":
                 continue
             first, second = text[:index], text[index + 1:]
-            if first.strip() and second.strip() and fits(first) and fits(second):
+            if not fits(first):
+                break
+            if first.strip() and second.strip() and fits(second):
                 imbalance = abs(font.getlength(first) - font.getlength(second))
                 candidates.append((imbalance, first, second))
         if candidates:
             _, first, second = min(candidates, key=lambda entry: entry[0])
             return [first, second]
-    raise ValueError("The sentence does not fit the two-line print area at this font size.")
+    raise TextDoesNotFit("The sentence does not fit the two-line print area at this font size.")
 
 
 def render_masks(
-    sentence: str, font_path: str | Path, layout: PageLayout | str | Path
+    sentence: str, font_path: str | Path, layout: PageLayout | str | Path, *, multiline: bool = False
 ) -> tuple[Image.Image, Image.Image]:
     """Return (glyph, right page) masks, in that order, as square PIL L images.
 
     Inference requires the team's authored layout and a licensed font file.
     Training photographs require separately aligned masks.
     """
-    text = build_condition(sentence).glyph_text
+    text = build_condition(sentence).glyph_text.replace("\r\n", "\n").replace("\r", "\n")
     if any(not char.isprintable() and char != "\n" for char in text):
         raise ValueError("Use printable text and optional line breaks.")
     if not isinstance(layout, PageLayout):
@@ -106,12 +139,13 @@ def render_masks(
     ImageDraw.Draw(page).rectangle((x0, y0, x1 - 1, y1 - 1), fill=255)
 
     x0, y0, x1, y1 = layout.print_box
-    lines = _lines(text, font, x1 - x0)
     ascent, descent = font.getmetrics()
     spacing = ascent + descent + layout.line_spacing
+    max_lines = max(0, (y1 - y0 + layout.line_spacing) // spacing)
+    lines = _lines(text, font, x1 - x0, multiline=multiline, max_lines=max_lines)
     height = ascent + descent + (len(lines) - 1) * spacing
     if height > y1 - y0:
-        raise ValueError("The text is too tall for the authored print_box.")
+        raise TextDoesNotFit("The text is too tall for the authored print_box.")
     baseline = (y0 + y1 - height) // 2 + ascent
     draw = ImageDraw.Draw(glyph)
     for index, line in enumerate(lines):
@@ -119,7 +153,7 @@ def render_masks(
         position = (x0 - bearing, baseline + index * spacing)
         left, top, right, bottom = draw.textbbox(position, line, font=font, anchor="ls")
         if not (x0 <= left <= right <= x1 and y0 <= top <= bottom <= y1):
-            raise ValueError("The glyph bounds exceed the authored print_box.")
+            raise TextDoesNotFit("The glyph bounds exceed the authored print_box.")
         draw.text(position, line, font=font, fill=255, anchor="ls")
     if glyph.getbbox() is None:
         raise ValueError("The chosen font produced no visible ink.")

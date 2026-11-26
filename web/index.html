@@ -63,6 +63,7 @@
     .image-label { font-size: .88rem; font-weight: 650; color: var(--muted); margin: 0 0 7px }
     .fallback { color: var(--muted); text-align: center; margin: 18px; font-size: .95rem }
     figcaption { margin-top: 12px; font: 1.15rem/1.45 var(--serif); color: #35463a; overflow-wrap: anywhere }
+    #caption { white-space: pre-wrap }
     @media (max-width: 800px) {
       .bar { min-height: 56px }
       .layout { grid-template-columns: 1fr; gap: 36px }
@@ -80,10 +81,10 @@
     <div class="layout">
       <section aria-labelledby="title">
         <h1 id="title">문장으로 만드는 책</h1>
-        <p class="intro">영문 한 문장을 입력하면 그 장면을 배경과 삽화로 그리고, 오른쪽 페이지에 문장을 인쇄해요.</p>
+        <p class="intro">입력한 글을 배경과 삽화로 그리고, 오른쪽 페이지에 인쇄해요.</p>
         <form id="generate-form" class="input-panel">
-          <label class="label" for="sentence">영문 문장</label>
-          <textarea id="sentence" name="sentence" lang="en" required maxlength="180" spellcheck="false" placeholder="A sailboat crosses the lake at dawn."></textarea>
+          <label class="label" for="sentence">영문 문장이나 짧은 문단</label>
+          <textarea id="sentence" name="sentence" lang="en" required spellcheck="false" placeholder="A sailboat crosses the lake at dawn."></textarea>
           <button id="generate" class="primary generate" type="submit" disabled>책 생성하기</button>
         </form>
         <form id="login" class="login" hidden>
@@ -288,8 +289,8 @@
       event.preventDefault();
       if (busy || !authenticated) return;
       const sentence = $("sentence").value.trim();
-      if (!sentence || !/\p{Script=Latin}/u.test(sentence) || /[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(sentence)) {
-        notice("영문 문장 한 개를 입력해 주세요.", true);
+      if (!sentence) {
+        notice("책에 넣을 영문 문장이나 짧은 문단을 입력해 주세요.", true);
         return $("sentence").focus();
       }
       busy = true;
@@ -303,8 +304,7 @@
         busy = false;
         controls();
         if (error.status === 401 || error.status === 403) return needLogin();
-        if (error.status === 409) return notice("다른 책을 만들고 있어요. 잠시 후 다시 눌러 주세요.", true);
-        notice(error.status === 400 ? error.message : "생성 요청을 확인하지 못했어요. 잠시 후 다시 시도해 주세요.", true);
+        notice(error.status ? error.message : "생성 요청을 확인하지 못했어요. 잠시 후 다시 시도해 주세요.", true);
       }
     });
     $("examples").addEventListener("click", event => {

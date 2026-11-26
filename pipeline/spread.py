@@ -10,6 +10,7 @@ from architecture.approved_base import file_digest, verify_base
 from architecture.background import SCENE_SAMPLER
 from . import geometry as page_geometry
 from . import print_page
+from .text_conditioning import text_conditioning
 
 
 def fit_plate(image, box):
@@ -151,8 +152,8 @@ def run_fusion(*, model, sentence, seed, steps, guidance, background, illustrati
         return torch.lerp(current, contact, belt)
 
     with torch.inference_mode():
-        pos, neg, pooled, neg_pooled = pipe.encode_prompt(prompt,negative_prompt=negative,device="cuda",
-                                                         do_classifier_free_guidance=True)
+        conditioning, clip_windows = text_conditioning(pipe, prompt, negative_prompt=negative)
+        pos, neg, pooled, neg_pooled = pipe.encode_prompt(**conditioning, device="cuda", do_classifier_free_guidance=True)
         embeddings = torch.cat([neg,pos])
         sizes = torch.tensor([[h,w,0,0,h,w]], dtype=pos.dtype, device="cuda").repeat(2,1)
         conditions = dict(text_embeds=torch.cat([neg_pooled,pooled]), time_ids=sizes)
@@ -212,7 +213,7 @@ def run_fusion(*, model, sentence, seed, steps, guidance, background, illustrati
             sentence=sentence, seed=seed, steps=steps, guidance=guidance, prompt=prompt,
             input_sha256=hashes, base_manifest_sha256=base_sha, code_sha256=file_digest(__file__),
             geometry=geometry, plate_box=list(geometry["illustration_box"]), illustration_box=list(ink_box),
-            width=w, height=h, scheduler=type(scheduler).__name__, first_step=first,
+            width=w, height=h, scheduler=type(scheduler).__name__, first_step=first, clip_windows=clip_windows,
             reverse_updates=steps-first, start_sigma=float(scheduler.sigmas[first]), paper_iterations=0,
             final_sha256=file_digest(stage/"final.png"), silhouette_sha256=file_digest(stage/"silhouette.png"),
             peak_reserved_bytes=torch.cuda.max_memory_reserved(), torch_version=torch.__version__,

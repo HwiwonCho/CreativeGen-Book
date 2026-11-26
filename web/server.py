@@ -17,9 +17,11 @@ import time
 import unicodedata
 from urllib.parse import urlsplit
 
+from architecture import book, joint_book
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = Path(__file__).with_name("index.html")
+PAGE_SIZE = 768
 WEEK = 7 * 24 * 60 * 60
 COOKIE = "creativegen_session"
 JOB_PATH = re.compile(r"/api/jobs/([a-f0-9]{32})(?:/(image|download|background))?")
@@ -49,6 +51,8 @@ class Jobs:
         self.folder = folder
         self.folder.mkdir(parents=True, exist_ok=True)
         self.model = model
+        config = json.loads((ROOT / "configs/project.json").read_text(encoding="utf-8-sig"))
+        self.font = ROOT / config["modules"]["book"]["font"]
         self.lock_file = folder / ".gpu.lock"
         self.guard = threading.Lock()
 
@@ -62,15 +66,26 @@ class Jobs:
                 return lock.read()
         return None
 
-    def create(self, sentence, owner):
-        import fcntl
-        if not isinstance(sentence, str) or not sentence.strip() or len(sentence) > 180:
-            raise RequestError(400, "영문 문장을 1~180자로 입력해 주세요.")
-        sentence = sentence.strip()
+    def page_text(self, sentence):
+        if not isinstance(sentence, str) or not sentence.strip():
+            raise RequestError(400, "책에 넣을 영문 문장이나 짧은 문단을 입력해 주세요.")
+        sentence = sentence.replace("\r\n", "\n").replace("\r", "\n").strip()
+        sentence = sentence.translate(str.maketrans({"\t": " ", "\u00a0": " ", "\u202f": " ",
+                                                     "\u2028": "\n", "\u2029": "\n\n"}))
         letters = [c for c in sentence if c.isalpha()]
-        if (not letters or any(not unicodedata.name(c, "").startswith("LATIN ") for c in letters)
-                or not sentence.isprintable()):
-            raise RequestError(400, "영문 한 문장을 한 줄로 입력해 주세요.")
+        if not letters or any(not unicodedata.name(c, "").startswith("LATIN ") and c != "ʼ" for c in letters):
+            raise RequestError(400, "현재 책에는 영문을 인쇄할 수 있어요. 글을 영어로 입력해 주세요.")
+        if any(not c.isprintable() and c != "\n" for c in sentence):
+            raise RequestError(400, "인쇄할 수 없는 제어 문자가 있어요. 일반 텍스트로 붙여 넣어 주세요.")
+        try:
+            joint_book.board_conditions(sentence, self.font, PAGE_SIZE)
+        except book.TextDoesNotFit as exc:
+            raise RequestError(400, "입력한 글이 오른쪽 페이지 한 쪽을 넘어요. 문단이나 줄바꿈을 조금 줄여 주세요.") from exc
+        return sentence
+
+    def create(self, sentence, owner):
+        sentence = self.page_text(sentence)
+        import fcntl
         with self.guard, self.lock_file.open("a+", encoding="ascii") as lock:
             try:
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -89,7 +104,8 @@ class Jobs:
             lock.write(job_id)
             lock.flush()
             cmd = [sys.executable, "-u", "-m", "pipeline", "--sentence=" + sentence,
-                   "--seed", str(seed), "--output", str(job / "result"), "--model", str(self.model)]
+                   "--seed", str(seed), "--output", str(job / "result"), "--model", str(self.model),
+                   "--size", str(PAGE_SIZE)]
             # The child owns the GPU lock even if the web server restarts.
             with (job / "run.log").open("wb") as log:
                 proc = subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=log,
@@ -167,8 +183,10 @@ class Handler(BaseHTTPRequestHandler):
         if self.headers.get_content_type() != "application/json" or self.headers.get("Transfer-Encoding"):
             raise RequestError(415, "JSON 요청이 필요해요.")
         length = self.headers.get("Content-Length", "")
-        if not re.fullmatch("[0-9]{1,5}", length) or not 0 < int(length) <= 4096:
+        if not re.fullmatch("[0-9]{1,12}", length) or int(length) == 0:
             raise RequestError(400, "요청 크기를 확인해 주세요.")
+        if int(length) > 16 * 1024:
+            raise RequestError(413, "요청 본문이 너무 커요. 책 한 쪽에 인쇄할 분량을 보내 주세요.")
         try:
             value = json.loads(self.rfile.read(int(length)).decode("utf-8"))
         except (UnicodeError, ValueError, RecursionError):

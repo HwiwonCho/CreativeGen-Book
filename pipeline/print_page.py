@@ -167,7 +167,10 @@ def register_scene_page(vae, latent, geometry, glyph_image):
     if min(width,height)<=2*margin or not 0<fraction<1:
         return None, {**report,"reason":"no room inside measured page"}
     x, y = (positions["fold"]+positions["right"])/2, positions["top"]+fraction*height
-    scale = min(1.45, .72*width/(x1-x0), .55*height/(y1-y0))
+    # Give a tall block of prose the page area it needs at the final image resolution.
+    prose = (y1-y0) > .18*(bottom-top)
+    width_fraction, height_fraction = (.84, .76) if prose else (.72, .55)
+    scale = min(1.45, width_fraction*width/(x1-x0), height_fraction*height/(y1-y0))
     half_w, half_h = .5*scale*(x1-x0), .5*scale*(y1-y0)
     baseline_slope = (1-fraction)*top_slope
     if min(width/2-half_w,y-positions["top"]-half_h-abs(top_slope-baseline_slope)*half_w,

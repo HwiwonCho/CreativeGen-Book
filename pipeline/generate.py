@@ -7,6 +7,7 @@ from tempfile import TemporaryDirectory
 
 from architecture import background, joint_book
 from architecture.approved_base import file_digest, verify_base
+from .text_conditioning import text_conditioning
 
 
 def generate(manifest: Path, module: str) -> None:
@@ -44,13 +45,11 @@ def generate(manifest: Path, module: str) -> None:
                   steps=plan["steps"], guidance=plan["guidance"], size=size,
                   base_manifest_sha256=base_hash, base_only=False)
     options = {}
+    prompt_2 = negative_prompt = None
     if module == "background":
         record.update(background.flatlay_settings(sentence, background.SCENE_SAMPLER, size))
         width, height = record["size"]
-        options.update(negative_prompt=stage["negative_prompt"], prompt_2=stage["prompt_2"])
-    for tokenizer, text in ((pipe.tokenizer, prompt), (pipe.tokenizer_2, options.get("prompt_2", prompt))):
-        if len(tokenizer(text, truncation=False).input_ids) > tokenizer.model_max_length:
-            raise ValueError("Prompt exceeds the native text encoder length.")
+        negative_prompt, prompt_2 = stage["negative_prompt"], stage["prompt_2"]
     load_adapter(pipe.unet, adapter)
     record["adapter_sha256"] = adapter_hash
 
@@ -74,7 +73,7 @@ def generate(manifest: Path, module: str) -> None:
                 values = torch.cat((page_only, values))
             residual = encoder(values)
         context = condition_unet(pipe.unet, residual)
-        options["negative_prompt"] = ""
+        negative_prompt = ""
         record.update(book_mode="joint_print", adapter_training_mode="joint_print",
                       conditioning="literal sentence, glyph and right leaf from first denoising step",
                       cfg_unconditional="empty text and right leaf", code_sha256=file_digest(__file__),
@@ -96,7 +95,9 @@ def generate(manifest: Path, module: str) -> None:
 
             options.update(callback_on_step_end=capture_book, callback_on_step_end_tensor_inputs=["latents"])
         with context, torch.inference_mode():
-            image = pipe(prompt, height=height, width=width, num_inference_steps=plan["steps"],
+            conditioning, record["clip_windows"] = text_conditioning(
+                pipe, prompt, prompt_2=prompt_2, negative_prompt=negative_prompt, guidance=plan["guidance"] > 1)
+            image = pipe(**conditioning, height=height, width=width, num_inference_steps=plan["steps"],
                          guidance_scale=plan["guidance"], generator=torch.Generator("cpu").manual_seed(stage["seed"]),
                          **options).images[0]
         image.save(result_dir / f"{module}.png")
