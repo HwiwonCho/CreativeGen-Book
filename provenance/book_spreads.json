@@ -1,0 +1,1511 @@
+{
+  "collection": "Internet Archive public-domain digitized books",
+  "selection": "IA-PD-facing-pages-v1",
+  "method": "Two real facing leaves rejoined in BookReader order, height-matched; title-specific ink from OCR word windows and local image contrast. All training targets use real scanned pixels. Text targets reproduce the printed title or designated excerpt; archival marks and incidental print are retained in the scan.",
+  "spreads": [
+    {
+      "id": "strangestoriesfr00pusuuoft",
+      "group_id": "ia-strangestoriesfr00pusuuoft",
+      "title": "Strange stories from a Chinese studio",
+      "creator": [
+        "Pu, Sung-ling, 1640-1715",
+        "Giles, Herbert Allen, 1845-1935"
+      ],
+      "date": "1880",
+      "contributor": "Robarts - University of Toronto",
+      "split": "train",
+      "caption": "STRANGE STORIES FROM A CHINESE STUDIO.",
+      "source_url": "https://archive.org/details/strangestoriesfr00pusuuoft/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/strangestoriesfr00pusuuoft/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600402.us.archive.org/BookReader/BookReaderJSIA.php?id=strangestoriesfr00pusuuoft&itemPath=%2F4%2Fitems%2Fstrangestoriesfr00pusuuoft&server=ia600402.us.archive.org&subPrefix=strangestoriesfr00pusuuoft&format=json",
+      "ocr_url": "https://archive.org/download/strangestoriesfr00pusuuoft/strangestoriesfr00pusuuoft_djvu.xml",
+      "ocr_size": [
+        2124,
+        3458
+      ],
+      "word_boxes": [
+        [
+          336,
+          1486,
+          1068,
+          1568
+        ],
+        [
+          1068,
+          1486,
+          1668,
+          1566
+        ],
+        [
+          904,
+          1669,
+          1062,
+          1702
+        ],
+        [
+          1062,
+          1669,
+          1093,
+          1700
+        ],
+        [
+          418,
+          1796,
+          1078,
+          1878
+        ],
+        [
+          1078,
+          1796,
+          1582,
+          1878
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/strangestoriesfr00pusuuoft-n5.jpg",
+          "url": "https://archive.org/download/strangestoriesfr00pusuuoft/page/n5_w850.jpg",
+          "sha256": "94976e744cc1ae5e669d812cb103b5a7c8d7e4df8eec03dac8211ceb1057baef"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/strangestoriesfr00pusuuoft-n6.jpg",
+          "url": "https://archive.org/download/strangestoriesfr00pusuuoft/page/n6_w850.jpg",
+          "sha256": "92d9790991d8975ac2c7b05799fa63a63f6cffd0d44ba562c07f06612907a75c"
+        }
+      ]
+    },
+    {
+      "id": "selectedpoemsfro00michrich",
+      "group_id": "ia-selectedpoemsfro00michrich",
+      "title": "Selected poems from Michelangelo Buonarroti, with translations from various sources",
+      "creator": [
+        "Michelangelo Buonarroti, 1475-1564",
+        "Cheney, Ednah Dow Littlehale, 1824-1904"
+      ],
+      "date": "1885",
+      "contributor": "University of California Libraries",
+      "split": "validation",
+      "caption": "SELECTED POEMS FROM MICHELANGELO BUONARROTI",
+      "source_url": "https://archive.org/details/selectedpoemsfro00michrich/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/selectedpoemsfro00michrich/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600607.us.archive.org/BookReader/BookReaderJSIA.php?id=selectedpoemsfro00michrich&itemPath=%2F20%2Fitems%2Fselectedpoemsfro00michrich&server=ia600607.us.archive.org&subPrefix=selectedpoemsfro00michrich&format=json",
+      "ocr_url": "https://archive.org/download/selectedpoemsfro00michrich/selectedpoemsfro00michrich_djvu.xml",
+      "ocr_size": [
+        2170,
+        3580
+      ],
+      "word_boxes": [
+        [
+          498,
+          1328,
+          1134,
+          1398
+        ],
+        [
+          1134,
+          1328,
+          1494,
+          1400
+        ],
+        [
+          924,
+          1542,
+          1068,
+          1576
+        ],
+        [
+          276,
+          1712,
+          1098,
+          1772
+        ],
+        [
+          1098,
+          1710,
+          1716,
+          1772
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/selectedpoemsfro00michrich-n3.jpg",
+          "url": "https://archive.org/download/selectedpoemsfro00michrich/page/n3_w850.jpg",
+          "sha256": "7e9806d0266e7a400c8af4315f9476ecff395b09fbdf8990a7faaba87aed3944"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/selectedpoemsfro00michrich-n4.jpg",
+          "url": "https://archive.org/download/selectedpoemsfro00michrich/page/n4_w850.jpg",
+          "sha256": "5d4d0f42ad236b6a9471237ee062d11c6605467bb8dd4d512eeddd28df472bf1"
+        }
+      ]
+    },
+    {
+      "id": "newforestitshist00wiseuoft",
+      "group_id": "ia-newforestitshist00wiseuoft",
+      "title": "The New Forest : its history and its scenery",
+      "creator": "Wise, John R. (John Richard de Capel), 1831-1890",
+      "date": "1895",
+      "contributor": "Robarts - University of Toronto",
+      "split": "train",
+      "caption": "THE NEW FOREST. ITS HISTORY AND ITS SCENERY",
+      "source_url": "https://archive.org/details/newforestitshist00wiseuoft/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/newforestitshist00wiseuoft/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600103.us.archive.org/BookReader/BookReaderJSIA.php?id=newforestitshist00wiseuoft&itemPath=%2F4%2Fitems%2Fnewforestitshist00wiseuoft&server=ia600103.us.archive.org&subPrefix=newforestitshist00wiseuoft&format=json",
+      "ocr_url": "https://archive.org/download/newforestitshist00wiseuoft/newforestitshist00wiseuoft_djvu.xml",
+      "ocr_size": [
+        2742,
+        4218
+      ],
+      "word_boxes": [
+        [
+          405,
+          1596,
+          834,
+          1693
+        ],
+        [
+          834,
+          1595,
+          1328,
+          1690
+        ],
+        [
+          1328,
+          1590,
+          1943,
+          1688
+        ],
+        [
+          701,
+          1883,
+          871,
+          1944
+        ],
+        [
+          871,
+          1883,
+          1286,
+          1943
+        ],
+        [
+          1286,
+          1881,
+          1526,
+          1941
+        ],
+        [
+          1526,
+          1879,
+          1651,
+          1939
+        ],
+        [
+          975,
+          2010,
+          1356,
+          2069
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/newforestitshist00wiseuoft-n3.jpg",
+          "url": "https://archive.org/download/newforestitshist00wiseuoft/page/n3_w850.jpg",
+          "sha256": "9a769f50a72346cad0bba1caeca6425b17a1661d54f6e50a20ef8511275ab34b"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/newforestitshist00wiseuoft-n4.jpg",
+          "url": "https://archive.org/download/newforestitshist00wiseuoft/page/n4_w850.jpg",
+          "sha256": "4e010e497a0994471518619ae8018f7feb2d1af9682c30a91a7007996349cc73"
+        }
+      ]
+    },
+    {
+      "id": "jatakaorstoriesofb01cowe",
+      "group_id": "ia-jatakaorstoriesofb01cowe",
+      "title": "The Jataka : or stories of the Buddha's former births",
+      "creator": [
+        "Cowell, Edward B. (Edward Byles), 1826-1903, ed",
+        "Chalmers, Robert, Sir, b. 1858, tr",
+        "Rouse, W. H. D. (William Henry Denham), 1863-1950, tr",
+        "Francis, H. T. (Henry Thomas), 1837-1924, tr",
+        "Neil, Robert Alexander, 1852-1901, tr"
+      ],
+      "date": "1895",
+      "contributor": "Princeton Theological Seminary Library",
+      "split": "train",
+      "caption": "THE JĀTAKA OR STORIES OF THE BUDDHA'S FORMER BIRTHS",
+      "source_url": "https://archive.org/details/jatakaorstoriesofb01cowe/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/jatakaorstoriesofb01cowe/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600108.us.archive.org/BookReader/BookReaderJSIA.php?id=jatakaorstoriesofb01cowe&itemPath=%2F13%2Fitems%2Fjatakaorstoriesofb01cowe&server=ia600108.us.archive.org&subPrefix=jatakaorstoriesofb01cowe&format=json",
+      "ocr_url": "https://archive.org/download/jatakaorstoriesofb01cowe/jatakaorstoriesofb01cowe_djvu.xml",
+      "ocr_size": [
+        2030,
+        3255
+      ],
+      "word_boxes": [
+        [
+          556,
+          1168,
+          926,
+          1248
+        ],
+        [
+          926,
+          1168,
+          1434,
+          1250
+        ],
+        [
+          963,
+          1416,
+          1025,
+          1447
+        ],
+        [
+          90,
+          1612,
+          456,
+          1676
+        ],
+        [
+          456,
+          1612,
+          590,
+          1676
+        ],
+        [
+          590,
+          1614,
+          788,
+          1676
+        ],
+        [
+          788,
+          1612,
+          1230,
+          1676
+        ],
+        [
+          1230,
+          1612,
+          1594,
+          1676
+        ],
+        [
+          1594,
+          1612,
+          1884,
+          1674
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/jatakaorstoriesofb01cowe-n5.jpg",
+          "url": "https://archive.org/download/jatakaorstoriesofb01cowe/page/n5_w850.jpg",
+          "sha256": "e6bdf2fbec59301a2f3bf53b197698b38662536a7a6ff760fd5b77f913764daa"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/jatakaorstoriesofb01cowe-n6.jpg",
+          "url": "https://archive.org/download/jatakaorstoriesofb01cowe/page/n6_w850.jpg",
+          "sha256": "d5eeb8477a8bc882e8bb918dfe3a6e27c3f8a28401ccca104774a70cc1771bad"
+        }
+      ]
+    },
+    {
+      "id": "historyofbritish00owen",
+      "group_id": "ia-historyofbritish00owen",
+      "title": "A history of British fossil mammals, and birds",
+      "creator": "Owen, Richard, 1804-1892",
+      "date": "1846",
+      "contributor": "Smithsonian Libraries",
+      "split": "train",
+      "caption": "A HISTORY OF BRITISH FOSSIL MAMMALS, AND BIRDS.",
+      "source_url": "https://archive.org/details/historyofbritish00owen/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/historyofbritish00owen/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia903202.us.archive.org/BookReader/BookReaderJSIA.php?id=historyofbritish00owen&itemPath=%2F24%2Fitems%2Fhistoryofbritish00owen&server=ia903202.us.archive.org&subPrefix=historyofbritish00owen&format=json",
+      "ocr_url": "https://archive.org/download/historyofbritish00owen/historyofbritish00owen_djvu.xml",
+      "ocr_size": [
+        1884,
+        3304
+      ],
+      "word_boxes": [
+        [
+          684,
+          1213,
+          722,
+          1267
+        ],
+        [
+          806,
+          1210,
+          946,
+          1267
+        ],
+        [
+          974,
+          1210,
+          1177,
+          1267
+        ],
+        [
+          910,
+          1372,
+          955,
+          1395
+        ],
+        [
+          235,
+          1497,
+          615,
+          1560
+        ],
+        [
+          699,
+          1498,
+          1012,
+          1561
+        ],
+        [
+          1100,
+          1498,
+          1606,
+          1569
+        ],
+        [
+          889,
+          1681,
+          965,
+          1705
+        ],
+        [
+          731,
+          1810,
+          1106,
+          1871
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/historyofbritish00owen-n3.jpg",
+          "url": "https://archive.org/download/historyofbritish00owen/page/n3_w850.jpg",
+          "sha256": "6e9fa20eae0431a9d9a93b755efcf22be69d18b35d8b052e80ea2eb7bff823f3"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/historyofbritish00owen-n4.jpg",
+          "url": "https://archive.org/download/historyofbritish00owen/page/n4_w850.jpg",
+          "sha256": "0f08c518f07f42f1335d6492de40add376465e495aff3cb8100368d151184691"
+        }
+      ]
+    },
+    {
+      "id": "goldsmithshistor00golduoft",
+      "group_id": "ia-goldsmithshistor00golduoft",
+      "title": "Goldsmith's history of the earth and animated nature, abridged : containing the natural history of animals, birds, fishes, reptiles, and insects; on the plan recommended by Miss Hannah More. For the use of schools, and youth of both sexes. By Mrs. Pilkington. A new ed., with plates",
+      "creator": [
+        "Goldsmith, Oliver, 1730?-1774",
+        "Pilkington, Mary (Hopkins) 1766-1839"
+      ],
+      "date": "1807",
+      "contributor": "Gerstein - University of Toronto",
+      "split": "validation",
+      "caption": "GOLDSMITH’S HISTORY OF THE EARTH AND ANIMATED NATURE, ABRIDGED.",
+      "source_url": "https://archive.org/details/goldsmithshistor00golduoft/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/goldsmithshistor00golduoft/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600507.us.archive.org/BookReader/BookReaderJSIA.php?id=goldsmithshistor00golduoft&itemPath=%2F16%2Fitems%2Fgoldsmithshistor00golduoft&server=ia600507.us.archive.org&subPrefix=goldsmithshistor00golduoft&format=json",
+      "ocr_url": "https://archive.org/download/goldsmithshistor00golduoft/goldsmithshistor00golduoft_djvu.xml",
+      "ocr_size": [
+        1676,
+        3106
+      ],
+      "word_boxes": [
+        [
+          462,
+          1186,
+          988,
+          1250
+        ],
+        [
+          104,
+          1326,
+          588,
+          1411
+        ],
+        [
+          588,
+          1336,
+          760,
+          1411
+        ],
+        [
+          760,
+          1340,
+          1008,
+          1414
+        ],
+        [
+          1008,
+          1344,
+          1336,
+          1424
+        ],
+        [
+          679,
+          1511,
+          758,
+          1535
+        ],
+        [
+          270,
+          1630,
+          788,
+          1684
+        ],
+        [
+          788,
+          1641,
+          1152,
+          1704
+        ],
+        [
+          577,
+          1788,
+          844,
+          1829
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/goldsmithshistor00golduoft-n5.jpg",
+          "url": "https://archive.org/download/goldsmithshistor00golduoft/page/n5_w850.jpg",
+          "sha256": "a8684620d542c1aefac4cdcdeaa701bdf6b683068987896c157eb46fd0656e94"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/goldsmithshistor00golduoft-n6.jpg",
+          "url": "https://archive.org/download/goldsmithshistor00golduoft/page/n6_w850.jpg",
+          "sha256": "14fca37c359f0b02abf1fefc5ac378ad961b0671213f4ee87fe19e72082c2bff"
+        }
+      ]
+    },
+    {
+      "id": "adventuresoftoms00twaiiala",
+      "group_id": "ia-adventuresoftoms00twaiiala",
+      "title": "The adventures of Tom Sawyer",
+      "creator": "Twain, Mark, 1835-1910",
+      "date": "1876",
+      "contributor": "University of California Libraries",
+      "split": "train",
+      "caption": "THE ADVENTURES OF TOM SAWYER.",
+      "source_url": "https://archive.org/details/adventuresoftoms00twaiiala/page/n9/mode/2up",
+      "rights_url": "https://archive.org/metadata/adventuresoftoms00twaiiala/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600109.us.archive.org/BookReader/BookReaderJSIA.php?id=adventuresoftoms00twaiiala&itemPath=%2F28%2Fitems%2Fadventuresoftoms00twaiiala&server=ia600109.us.archive.org&subPrefix=adventuresoftoms00twaiiala&format=json",
+      "ocr_url": "https://archive.org/download/adventuresoftoms00twaiiala/adventuresoftoms00twaiiala_djvu.xml",
+      "ocr_size": [
+        2340,
+        3208
+      ],
+      "word_boxes": [
+        [
+          1018,
+          1462,
+          1122,
+          1496
+        ],
+        [
+          436,
+          1602,
+          998,
+          1653
+        ],
+        [
+          998,
+          1602,
+          1145,
+          1651
+        ],
+        [
+          1145,
+          1601,
+          1360,
+          1652
+        ],
+        [
+          1360,
+          1601,
+          1699,
+          1652
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 10,
+          "viewer_index": 9,
+          "file": "source/adventuresoftoms00twaiiala-n9.jpg",
+          "url": "https://archive.org/download/adventuresoftoms00twaiiala/page/n9_w850.jpg",
+          "sha256": "01df73b211a8c1218f1dbf10ba77153fc8ccaf63db8779a22420442f9243e4f8"
+        },
+        {
+          "side": "R",
+          "leaf": 11,
+          "viewer_index": 10,
+          "file": "source/adventuresoftoms00twaiiala-n10.jpg",
+          "url": "https://archive.org/download/adventuresoftoms00twaiiala/page/n10_w850.jpg",
+          "sha256": "70392023e562338ae5bbb1fb72e803cda1af8f743d4690d6c7e81f4e58786568"
+        }
+      ]
+    },
+    {
+      "id": "handbookoffieldg00coue",
+      "group_id": "ia-handbookoffieldg00coue",
+      "title": "Handbook of field and general ornithology; a manual of the structure and classification of birds",
+      "creator": "Coues, Elliott, 1842-1899",
+      "date": "1890",
+      "contributor": "American Museum of Natural History Library",
+      "split": "train",
+      "caption": "PART I FIELD ORNITHOLOGY BEING A MANUAL OF INSTRUCTION FOR COLLECTING, PREPARING, AND PRESERVING BIRDS",
+      "source_url": "https://archive.org/details/handbookoffieldg00coue/page/n11/mode/2up",
+      "rights_url": "https://archive.org/metadata/handbookoffieldg00coue/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601606.us.archive.org/BookReader/BookReaderJSIA.php?id=handbookoffieldg00coue&itemPath=%2F13%2Fitems%2Fhandbookoffieldg00coue&server=ia601606.us.archive.org&subPrefix=handbookoffieldg00coue&format=json",
+      "ocr_url": "https://archive.org/download/handbookoffieldg00coue/handbookoffieldg00coue_djvu.xml",
+      "ocr_size": [
+        1907,
+        3276
+      ],
+      "word_boxes": [
+        [
+          788,
+          1276,
+          1020,
+          1324
+        ],
+        [
+          1020,
+          1278,
+          1040,
+          1324
+        ],
+        [
+          350,
+          1422,
+          742,
+          1487
+        ],
+        [
+          742,
+          1424,
+          1458,
+          1490
+        ],
+        [
+          861,
+          1566,
+          972,
+          1589
+        ],
+        [
+          473,
+          1664,
+          537,
+          1699
+        ],
+        [
+          537,
+          1663,
+          785,
+          1699
+        ],
+        [
+          785,
+          1664,
+          878,
+          1699
+        ],
+        [
+          878,
+          1664,
+          1256,
+          1700
+        ],
+        [
+          1256,
+          1665,
+          1350,
+          1701
+        ],
+        [
+          249,
+          1749,
+          609,
+          1795
+        ],
+        [
+          609,
+          1750,
+          944,
+          1794
+        ],
+        [
+          944,
+          1751,
+          1082,
+          1786
+        ],
+        [
+          1082,
+          1751,
+          1429,
+          1787
+        ],
+        [
+          1429,
+          1751,
+          1577,
+          1787
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 12,
+          "viewer_index": 11,
+          "file": "source/handbookoffieldg00coue-n11.jpg",
+          "url": "https://archive.org/download/handbookoffieldg00coue/page/n11_w850.jpg",
+          "sha256": "0eacd0d94f4b9105db6109b5c1e1d2b2e058482b2c78e1ab8ebfd064298b2aed"
+        },
+        {
+          "side": "R",
+          "leaf": 13,
+          "viewer_index": 12,
+          "file": "source/handbookoffieldg00coue-n12.jpg",
+          "url": "https://archive.org/download/handbookoffieldg00coue/page/n12_w850.jpg",
+          "sha256": "476b8b6b9533b0c21fe690ed926e211dc2628f0651bce2a57f712af8b317560a"
+        }
+      ]
+    },
+    {
+      "id": "wanderingsinsout00wateuoft",
+      "group_id": "ia-wanderingsinsout00wateuoft",
+      "title": "Wanderings in South America, the north-west of the United States, and the Antilles, in the years 1812, 1816, 1820, & 1824 : with original instruction for the perfect preservation of birds, etc. for cabinets of natural history",
+      "creator": [
+        "Waterton, Charles, 1782-1865",
+        "Wood, J. G. (John George), 1827-1889"
+      ],
+      "date": "1889",
+      "contributor": "Robarts - University of Toronto",
+      "split": "train",
+      "caption": "WANDERINGS IN SOUTH AMERICA.",
+      "source_url": "https://archive.org/details/wanderingsinsout00wateuoft/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/wanderingsinsout00wateuoft/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600800.us.archive.org/BookReader/BookReaderJSIA.php?id=wanderingsinsout00wateuoft&itemPath=%2F33%2Fitems%2Fwanderingsinsout00wateuoft&server=ia600800.us.archive.org&subPrefix=wanderingsinsout00wateuoft&format=json",
+      "ocr_url": "https://archive.org/download/wanderingsinsout00wateuoft/wanderingsinsout00wateuoft_djvu.xml",
+      "ocr_size": [
+        2132,
+        3554
+      ],
+      "word_boxes": [
+        [
+          192,
+          1676,
+          868,
+          1770
+        ],
+        [
+          868,
+          1686,
+          1038,
+          1770
+        ],
+        [
+          1038,
+          1690,
+          1386,
+          1772
+        ],
+        [
+          1386,
+          1694,
+          1808,
+          1776
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/wanderingsinsout00wateuoft-n3.jpg",
+          "url": "https://archive.org/download/wanderingsinsout00wateuoft/page/n3_w850.jpg",
+          "sha256": "0392a9fa59d8109f0da3aae874cec6eeb04ed5d67eb629675efb15af48e85253"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/wanderingsinsout00wateuoft-n4.jpg",
+          "url": "https://archive.org/download/wanderingsinsout00wateuoft/page/n4_w850.jpg",
+          "sha256": "ab1ba50cfd13aaba53c3388586df92572128adb2b013d7172a55c6d5f77bac2e"
+        }
+      ]
+    },
+    {
+      "id": "musicofwaterscol00smituoft",
+      "group_id": "ia-musicofwaterscol00smituoft",
+      "title": "The music of the waters. A collection of the sailors' chanties, or working songs of the sea, of all maritime nations. Boatmen's fishermen's, and rowing songs, and water legends",
+      "creator": "Smith, Laura Alexandrine",
+      "date": "1888",
+      "contributor": "Music - University of Toronto",
+      "split": "train",
+      "caption": "THE MUSIC OF THE WATERS.",
+      "source_url": "https://archive.org/details/musicofwaterscol00smituoft/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/musicofwaterscol00smituoft/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601601.us.archive.org/BookReader/BookReaderJSIA.php?id=musicofwaterscol00smituoft&itemPath=%2F33%2Fitems%2Fmusicofwaterscol00smituoft&server=ia601601.us.archive.org&subPrefix=musicofwaterscol00smituoft&format=json",
+      "ocr_url": "https://archive.org/download/musicofwaterscol00smituoft/musicofwaterscol00smituoft_djvu.xml",
+      "ocr_size": [
+        2352,
+        3886
+      ],
+      "word_boxes": [
+        [
+          310,
+          1802,
+          554,
+          1910
+        ],
+        [
+          638,
+          1800,
+          1008,
+          1912
+        ],
+        [
+          1088,
+          1798,
+          1238,
+          1908
+        ],
+        [
+          1312,
+          1796,
+          1560,
+          1906
+        ],
+        [
+          1624,
+          1786,
+          2128,
+          1900
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/musicofwaterscol00smituoft-n3.jpg",
+          "url": "https://archive.org/download/musicofwaterscol00smituoft/page/n3_w850.jpg",
+          "sha256": "83f6673dcef65f342a4dbf2783e613ee12596a650dda79c59ae5b4b250dcbf30"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/musicofwaterscol00smituoft-n4.jpg",
+          "url": "https://archive.org/download/musicofwaterscol00smituoft/page/n4_w850.jpg",
+          "sha256": "0db2cc5f425fbe6e7dac2fdab32fe8955b1bdbe46bd60cb86b03ba0918ad1742"
+        }
+      ]
+    },
+    {
+      "id": "historyofnortham01bair",
+      "group_id": "ia-historyofnortham01bair",
+      "title": "A history of North American birds",
+      "creator": [
+        "Baird, Spencer Fullerton, 1823-1887",
+        "Brewer, T. M. (Thomas Mayo), 1814-1880",
+        "Ridgway, Robert, 1850-1929"
+      ],
+      "date": "1875",
+      "contributor": "American Museum of Natural History Library",
+      "split": "train",
+      "caption": "NORTH AMERICAN BIRDS. LAND BIRDS. VOL. I.",
+      "source_url": "https://archive.org/details/historyofnortham01bair/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/historyofnortham01bair/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia902805.us.archive.org/BookReader/BookReaderJSIA.php?id=historyofnortham01bair&itemPath=%2F2%2Fitems%2Fhistoryofnortham01bair&server=ia902805.us.archive.org&subPrefix=historyofnortham01bair&format=json",
+      "ocr_url": "https://archive.org/download/historyofnortham01bair/historyofnortham01bair_djvu.xml",
+      "ocr_size": [
+        1939,
+        2988
+      ],
+      "word_boxes": [
+        [
+          182,
+          1074,
+          598,
+          1149
+        ],
+        [
+          598,
+          1073,
+          1221,
+          1149
+        ],
+        [
+          1221,
+          1071,
+          1551,
+          1147
+        ],
+        [
+          542,
+          1446,
+          877,
+          1500
+        ],
+        [
+          877,
+          1445,
+          1199,
+          1501
+        ],
+        [
+          776,
+          1662,
+          931,
+          1699
+        ],
+        [
+          931,
+          1663,
+          964,
+          1699
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/historyofnortham01bair-n3.jpg",
+          "url": "https://archive.org/download/historyofnortham01bair/page/n3_w850.jpg",
+          "sha256": "8eea3a49a95c1f28c7109beaed55958930686232c6db1b5bc29021ffae06a7b2"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/historyofnortham01bair-n4.jpg",
+          "url": "https://archive.org/download/historyofnortham01bair/page/n4_w850.jpg",
+          "sha256": "d8d4fc6e01f9a0a107d16b1d29cd6f26c491fc9a40d0179b01bcce5934d15c88"
+        }
+      ]
+    },
+    {
+      "id": "adventuresofsher00doylrich",
+      "group_id": "ia-adventuresofsher00doylrich",
+      "title": "Adventures of Sherlock Holmes",
+      "creator": "Doyle, Arthur Conan, 1859-1930, author",
+      "date": "1892",
+      "contributor": "University of California Libraries",
+      "split": "validation",
+      "caption": "ADVENTURES OF SHERLOCK HOLMES",
+      "source_url": "https://archive.org/details/adventuresofsher00doylrich/page/n13/mode/2up",
+      "rights_url": "https://archive.org/metadata/adventuresofsher00doylrich/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601502.us.archive.org/BookReader/BookReaderJSIA.php?id=adventuresofsher00doylrich&itemPath=%2F25%2Fitems%2Fadventuresofsher00doylrich&server=ia601502.us.archive.org&subPrefix=adventuresofsher00doylrich&format=json",
+      "ocr_url": "https://archive.org/download/adventuresofsher00doylrich/adventuresofsher00doylrich_djvu.xml",
+      "ocr_size": [
+        2132,
+        3386
+      ],
+      "word_boxes": [
+        [
+          216,
+          1511,
+          765,
+          1581
+        ],
+        [
+          815,
+          1514,
+          913,
+          1582
+        ],
+        [
+          962,
+          1514,
+          1390,
+          1585
+        ],
+        [
+          1445,
+          1516,
+          1775,
+          1586
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 14,
+          "viewer_index": 13,
+          "file": "source/adventuresofsher00doylrich-n13.jpg",
+          "url": "https://archive.org/download/adventuresofsher00doylrich/page/n13_w850.jpg",
+          "sha256": "0e2503c1f1f45ec659da90ac40e0e594bf79a576cb2606227c56e7eac290cab6"
+        },
+        {
+          "side": "R",
+          "leaf": 15,
+          "viewer_index": 14,
+          "file": "source/adventuresofsher00doylrich-n14.jpg",
+          "url": "https://archive.org/download/adventuresofsher00doylrich/page/n14_w850.jpg",
+          "sha256": "c7946fff164fe2b35c876eb2672ff7b25bc720801df84dad820da4c43dde42df"
+        }
+      ]
+    },
+    {
+      "id": "languageofflower00tyas",
+      "group_id": "ia-languageofflower00tyas",
+      "title": "The language of flowers, or, Floral emblems of thoughts, feelings, and sentiments",
+      "creator": "Tyas, Robert, 1811-1879",
+      "date": "1869",
+      "contributor": "New York Botanical Garden, LuEsther T. Mertz Library",
+      "split": "train",
+      "caption": "THE LANGUAGE OF FLOWERS.",
+      "source_url": "https://archive.org/details/languageofflower00tyas/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/languageofflower00tyas/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601506.us.archive.org/BookReader/BookReaderJSIA.php?id=languageofflower00tyas&itemPath=%2F19%2Fitems%2Flanguageofflower00tyas&server=ia601506.us.archive.org&subPrefix=languageofflower00tyas&format=json",
+      "ocr_url": "https://archive.org/download/languageofflower00tyas/languageofflower00tyas_djvu.xml",
+      "ocr_size": [
+        2311,
+        3442
+      ],
+      "word_boxes": [
+        [
+          368,
+          1640,
+          647,
+          1699
+        ],
+        [
+          647,
+          1639,
+          1253,
+          1698
+        ],
+        [
+          1253,
+          1638,
+          1440,
+          1697
+        ],
+        [
+          1440,
+          1636,
+          1904,
+          1696
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/languageofflower00tyas-n3.jpg",
+          "url": "https://archive.org/download/languageofflower00tyas/page/n3_w850.jpg",
+          "sha256": "e4c98347d645259184df346be5aa78620e69ccb2044cb1d329b8e846c3d4b552"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/languageofflower00tyas-n4.jpg",
+          "url": "https://archive.org/download/languageofflower00tyas/page/n4_w850.jpg",
+          "sha256": "12ebbac568642ed5431bc40cfe37e61af963902e6487f0f4010b44970a879e30"
+        }
+      ]
+    },
+    {
+      "id": "historyofcoggesh00beauuoft",
+      "group_id": "ia-historyofcoggesh00beauuoft",
+      "title": "A history of Coggeshall, in Essex : with an account of its church, abbey, manors, ancient houses, &c., and biographical sketches of its most distinguished men and ancient families, including the family of Coggeshall from 1149, to the re-union at Rhode Island, U.S.A., in 1884",
+      "creator": "Beaumont, George Frederick",
+      "date": "1890",
+      "contributor": "Robarts - University of Toronto",
+      "split": "train",
+      "caption": "A History of Coggeshall.",
+      "source_url": "https://archive.org/details/historyofcoggesh00beauuoft/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/historyofcoggesh00beauuoft/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601009.us.archive.org/BookReader/BookReaderJSIA.php?id=historyofcoggesh00beauuoft&itemPath=%2F9%2Fitems%2Fhistoryofcoggesh00beauuoft&server=ia601009.us.archive.org&subPrefix=historyofcoggesh00beauuoft&format=json",
+      "ocr_url": "https://archive.org/download/historyofcoggesh00beauuoft/historyofcoggesh00beauuoft_djvu.xml",
+      "ocr_size": [
+        1810,
+        3048
+      ],
+      "word_boxes": [
+        [
+          135,
+          1517,
+          304,
+          1607
+        ],
+        [
+          304,
+          1520,
+          766,
+          1632
+        ],
+        [
+          766,
+          1520,
+          929,
+          1636
+        ],
+        [
+          929,
+          1519,
+          1468,
+          1635
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/historyofcoggesh00beauuoft-n3.jpg",
+          "url": "https://archive.org/download/historyofcoggesh00beauuoft/page/n3_w850.jpg",
+          "sha256": "44a5e116d4a486605b151879bb11dfe77b9e74132fea25e242af924467270c5e"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/historyofcoggesh00beauuoft-n4.jpg",
+          "url": "https://archive.org/download/historyofcoggesh00beauuoft/page/n4_w850.jpg",
+          "sha256": "c35fc703d2db298e196a9b9389459a297b0b9340fd4c5a3418a8491b928a013a"
+        }
+      ]
+    },
+    {
+      "id": "historyofbritish1828flem",
+      "group_id": "ia-historyofbritish1828flem",
+      "title": "A history of British animals : exhibiting the descriptive characters and systematical arrangement of the genera and species of quadrupeds, birds, reptiles, fishes, mollusca, and radiata of the United Kingdom; including the indigenous, extirpated, and extinct kinds, together with periodical and occasional visitants",
+      "creator": "Fleming, John, 1785-1857",
+      "date": "1828",
+      "contributor": "Harvard University, Museum of Comparative Zoology, Ernst Mayr Library",
+      "split": "train",
+      "caption": "BRITISH ANIMALS.",
+      "source_url": "https://archive.org/details/historyofbritish1828flem/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/historyofbritish1828flem/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601809.us.archive.org/BookReader/BookReaderJSIA.php?id=historyofbritish1828flem&itemPath=%2F14%2Fitems%2Fhistoryofbritish1828flem&server=ia601809.us.archive.org&subPrefix=historyofbritish1828flem&format=json",
+      "ocr_url": "https://archive.org/download/historyofbritish1828flem/historyofbritish1828flem_djvu.xml",
+      "ocr_size": [
+        1995,
+        3300
+      ],
+      "word_boxes": [
+        [
+          452,
+          1530,
+          862,
+          1592
+        ],
+        [
+          896,
+          1531,
+          1359,
+          1594
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/historyofbritish1828flem-n3.jpg",
+          "url": "https://archive.org/download/historyofbritish1828flem/page/n3_w850.jpg",
+          "sha256": "fa5a1448b8769f0244dd88771ec61904eca1b3cef52e8acd2395cc11d76ca94e"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/historyofbritish1828flem-n4.jpg",
+          "url": "https://archive.org/download/historyofbritish1828flem/page/n4_w850.jpg",
+          "sha256": "2d4c66fe8792fb2f6f0d3f674d2dd21050cbcea5dcccfff045b32c1b47dc17f2"
+        }
+      ]
+    },
+    {
+      "id": "birdsofindiabein01jerd",
+      "group_id": "ia-birdsofindiabein01jerd",
+      "title": "The birds of India : being a natural history of all the birds known to inhabit continental India, with descriptions of the species, genera, families, tribes, and orders, and a brief notice of such families as are not found in India, making it a manual of ornithology specially adapted for India",
+      "creator": "Jerdon, T. C. (Thomas Claverhill), 1811-1872",
+      "date": "1862",
+      "contributor": "American Museum of Natural History Library",
+      "split": "train",
+      "caption": "THE BIRDS OF INDIA.",
+      "source_url": "https://archive.org/details/birdsofindiabein01jerd/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/birdsofindiabein01jerd/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601907.us.archive.org/BookReader/BookReaderJSIA.php?id=birdsofindiabein01jerd&itemPath=%2F2%2Fitems%2Fbirdsofindiabein01jerd&server=ia601907.us.archive.org&subPrefix=birdsofindiabein01jerd&format=json",
+      "ocr_url": "https://archive.org/download/birdsofindiabein01jerd/birdsofindiabein01jerd_djvu.xml",
+      "ocr_size": [
+        1971,
+        3318
+      ],
+      "word_boxes": [
+        [
+          876,
+          1434,
+          994,
+          1478
+        ],
+        [
+          288,
+          1610,
+          836,
+          1698
+        ],
+        [
+          836,
+          1610,
+          1092,
+          1698
+        ],
+        [
+          1092,
+          1610,
+          1546,
+          1696
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/birdsofindiabein01jerd-n5.jpg",
+          "url": "https://archive.org/download/birdsofindiabein01jerd/page/n5_w850.jpg",
+          "sha256": "99df33fdc6bbf36e8951521ea0d3a7a474a1935803311a672c8dae2cf48b9921"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/birdsofindiabein01jerd-n6.jpg",
+          "url": "https://archive.org/download/birdsofindiabein01jerd/page/n6_w850.jpg",
+          "sha256": "0a248500be79d27d223c99d370d8d5e69ebc9fea0197ce4ed7ad5d8e64095e9b"
+        }
+      ]
+    },
+    {
+      "id": "birdsofamericafr05audu",
+      "group_id": "ia-birdsofamericafr05audu",
+      "title": "The birds of America : from drawings made in the United States and their territories",
+      "creator": [
+        "Audubon, John James, 1785-1851",
+        "Bowen, John T., ca. 1801-1856?, lithographer"
+      ],
+      "date": "1840",
+      "contributor": "Smithsonian Libraries",
+      "split": "train",
+      "caption": "BIRDS OF AMERICA.",
+      "source_url": "https://archive.org/details/birdsofamericafr05audu/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/birdsofamericafr05audu/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia903106.us.archive.org/BookReader/BookReaderJSIA.php?id=birdsofamericafr05audu&itemPath=%2F10%2Fitems%2Fbirdsofamericafr05audu&server=ia903106.us.archive.org&subPrefix=birdsofamericafr05audu&format=json",
+      "ocr_url": "https://archive.org/download/birdsofamericafr05audu/birdsofamericafr05audu_djvu.xml",
+      "ocr_size": [
+        2041,
+        3509
+      ],
+      "word_boxes": [
+        [
+          320,
+          1641,
+          765,
+          1710
+        ],
+        [
+          845,
+          1641,
+          1004,
+          1710
+        ],
+        [
+          1085,
+          1641,
+          1811,
+          1711
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/birdsofamericafr05audu-n5.jpg",
+          "url": "https://archive.org/download/birdsofamericafr05audu/page/n5_w850.jpg",
+          "sha256": "e166cf057c6bced89674f1bba48cda6b389ae7fbe8393f73556d813fcf92a3f4"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/birdsofamericafr05audu-n6.jpg",
+          "url": "https://archive.org/download/birdsofamericafr05audu/page/n6_w850.jpg",
+          "sha256": "0bc49a69e0e3e253f67bd5968efc9081c574e17a65ea0f9256ad896cd60957e0"
+        }
+      ]
+    },
+    {
+      "id": "birdsofnorfolkwi01stev",
+      "group_id": "ia-birdsofnorfolkwi01stev",
+      "title": "The birds of Norfolk : with remarks on their habits, migration, and local distribution",
+      "creator": [
+        "Stevenson, Henry, 1833-1888",
+        "Southwell, Thomas, 1831-1909"
+      ],
+      "date": "1866",
+      "contributor": "American Museum of Natural History Library",
+      "split": "train",
+      "caption": "THE BIRDS OF NORFOLK.",
+      "source_url": "https://archive.org/details/birdsofnorfolkwi01stev/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/birdsofnorfolkwi01stev/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601607.us.archive.org/BookReader/BookReaderJSIA.php?id=birdsofnorfolkwi01stev&itemPath=%2F19%2Fitems%2Fbirdsofnorfolkwi01stev&server=ia601607.us.archive.org&subPrefix=birdsofnorfolkwi01stev&format=json",
+      "ocr_url": "https://archive.org/download/birdsofnorfolkwi01stev/birdsofnorfolkwi01stev_djvu.xml",
+      "ocr_size": [
+        1861,
+        3015
+      ],
+      "word_boxes": [
+        [
+          460,
+          1402,
+          660,
+          1467
+        ],
+        [
+          660,
+          1402,
+          940,
+          1468
+        ],
+        [
+          940,
+          1402,
+          1080,
+          1468
+        ],
+        [
+          1080,
+          1402,
+          1458,
+          1468
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 8,
+          "viewer_index": 3,
+          "file": "source/birdsofnorfolkwi01stev-n3.jpg",
+          "url": "https://archive.org/download/birdsofnorfolkwi01stev/page/n3_w850.jpg",
+          "sha256": "99b0562f996607989ce1e1771a6753fef9e456b9d08e03926f6bbda5f59ec1a6"
+        },
+        {
+          "side": "R",
+          "leaf": 9,
+          "viewer_index": 4,
+          "file": "source/birdsofnorfolkwi01stev-n4.jpg",
+          "url": "https://archive.org/download/birdsofnorfolkwi01stev/page/n4_w850.jpg",
+          "sha256": "a66ed589b65c112efd9013b5464dd2d61fb30437bd60d0be14c160b3dd88393c"
+        }
+      ]
+    },
+    {
+      "id": "glossaryofgreekb00thom",
+      "group_id": "ia-glossaryofgreekb00thom",
+      "title": "A glossary of Greek birds",
+      "creator": "Thompson, D'Arcy Wentworth, 1860-1948, Sir",
+      "date": "1895",
+      "contributor": "Smithsonian Libraries",
+      "split": "train",
+      "caption": "A GLOSSARY OF GREEK BIRDS",
+      "source_url": "https://archive.org/details/glossaryofgreekb00thom/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/glossaryofgreekb00thom/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600601.us.archive.org/BookReader/BookReaderJSIA.php?id=glossaryofgreekb00thom&itemPath=%2F17%2Fitems%2Fglossaryofgreekb00thom&server=ia600601.us.archive.org&subPrefix=glossaryofgreekb00thom&format=json",
+      "ocr_url": "https://archive.org/download/glossaryofgreekb00thom/glossaryofgreekb00thom_djvu.xml",
+      "ocr_size": [
+        2009,
+        3243
+      ],
+      "word_boxes": [
+        [
+          929,
+          1383,
+          967,
+          1421
+        ],
+        [
+          120,
+          1517,
+          754,
+          1635
+        ],
+        [
+          810,
+          1549,
+          929,
+          1610
+        ],
+        [
+          978,
+          1548,
+          1294,
+          1613
+        ],
+        [
+          1351,
+          1545,
+          1622,
+          1608
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/glossaryofgreekb00thom-n3.jpg",
+          "url": "https://archive.org/download/glossaryofgreekb00thom/page/n3_w850.jpg",
+          "sha256": "72ad27366748d6f1387946846880632c8888e68d66e53f671ebaa2ef45da0927"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/glossaryofgreekb00thom-n4.jpg",
+          "url": "https://archive.org/download/glossaryofgreekb00thom/page/n4_w850.jpg",
+          "sha256": "3fdf52ccb6ee6213650b1f79eb5c39159bc73b8d12f7819e528c3d9b8c9aedae"
+        }
+      ]
+    },
+    {
+      "id": "flowersofengadin00heat",
+      "group_id": "ia-flowersofengadin00heat",
+      "title": "Flowers of the Engadine. Drawn from nature",
+      "creator": "Heathcote, Evelyn Dawsonne",
+      "date": "1891",
+      "contributor": "New York Botanical Garden, LuEsther T. Mertz Library",
+      "split": "validation",
+      "caption": "FLOWERS OF THE ENGADINE.",
+      "source_url": "https://archive.org/details/flowersofengadin00heat/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/flowersofengadin00heat/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601605.us.archive.org/BookReader/BookReaderJSIA.php?id=flowersofengadin00heat&itemPath=%2F20%2Fitems%2Fflowersofengadin00heat&server=ia601605.us.archive.org&subPrefix=flowersofengadin00heat&format=json",
+      "ocr_url": "https://archive.org/download/flowersofengadin00heat/flowersofengadin00heat_djvu.xml",
+      "ocr_size": [
+        1970,
+        3027
+      ],
+      "word_boxes": [
+        [
+          404,
+          1510,
+          727,
+          1544
+        ],
+        [
+          727,
+          1509,
+          853,
+          1543
+        ],
+        [
+          853,
+          1509,
+          1028,
+          1543
+        ],
+        [
+          1028,
+          1510,
+          1338,
+          1544
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/flowersofengadin00heat-n3.jpg",
+          "url": "https://archive.org/download/flowersofengadin00heat/page/n3_w850.jpg",
+          "sha256": "799558e54ecdf541cc1cad25bafec827e5c4ca756764fafe68746691ec265ba7"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/flowersofengadin00heat-n4.jpg",
+          "url": "https://archive.org/download/flowersofengadin00heat/page/n4_w850.jpg",
+          "sha256": "c29c21bb291bbaca643e16c3dab8bc73e28202b3c0e4192b50bb1ace8b77ca11"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+* text=auto eol=lf
+data/** -text
+provenance/** -text
+configs/fonts/** -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ttf binary

@@ -1,0 +1,604 @@
+{
+  "spreads": [
+    {
+      "id": "leavesofgrassrhys00whitrich",
+      "group_id": "ia-leavesofgrassrhys00whitrich",
+      "split": "train",
+      "caption": "Leaves of Grass. Walter Scott, 24 Warwick Lane Paternoster Row,",
+      "title": "Leaves of grass : the poems of Walt Whitman",
+      "creator": [
+        "Whitman, Walt, 1819-1892",
+        "Rhys, Ernest, 1859-1946"
+      ],
+      "date": "1886",
+      "contributor": "University of California Libraries",
+      "source_url": "https://archive.org/details/leavesofgrassrhys00whitrich/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/leavesofgrassrhys00whitrich/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia903104.us.archive.org/BookReader/BookReaderJSIA.php?id=leavesofgrassrhys00whitrich&itemPath=%2F6%2Fitems%2Fleavesofgrassrhys00whitrich&server=ia903104.us.archive.org&subPrefix=leavesofgrassrhys00whitrich&format=json",
+      "ocr_url": "https://archive.org/download/leavesofgrassrhys00whitrich/leavesofgrassrhys00whitrich_djvu.xml",
+      "ocr_size": [
+        2086,
+        2976
+      ],
+      "word_boxes": [
+        [
+          484,
+          326,
+          968,
+          410
+        ],
+        [
+          968,
+          320,
+          1148,
+          406
+        ],
+        [
+          1148,
+          320,
+          1512,
+          404
+        ],
+        [
+          274,
+          2452,
+          494,
+          2518
+        ],
+        [
+          494,
+          2452,
+          687,
+          2533
+        ],
+        [
+          687,
+          2451,
+          795,
+          2518
+        ],
+        [
+          795,
+          2450,
+          1080,
+          2517
+        ],
+        [
+          1080,
+          2449,
+          1267,
+          2517
+        ],
+        [
+          1267,
+          2448,
+          1608,
+          2517
+        ],
+        [
+          1608,
+          2448,
+          1734,
+          2525
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/leavesofgrassrhys00whitrich-n5.jpg",
+          "url": "https://archive.org/download/leavesofgrassrhys00whitrich/page/n5_w850.jpg",
+          "sha256": "8650ab26733c853919cc47ec96fc5f467eb8bcbb3403bde3791d026b4aa8db93"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/leavesofgrassrhys00whitrich-n6.jpg",
+          "url": "https://archive.org/download/leavesofgrassrhys00whitrich/page/n6_w850.jpg",
+          "sha256": "42c749b4c2b20ca3928423a2d09d3e9d461fe8ca39dc12bfdd196eacc71e5976"
+        }
+      ]
+    },
+    {
+      "id": "manualoftaxiderm00mayn",
+      "group_id": "ia-manualoftaxiderm00mayn",
+      "split": "train",
+      "caption": "A Complete Guide",
+      "title": "Manual of taxidermy : a complete guide in collecting and preserving birds and mammals",
+      "creator": [
+        "Maynard, C. J. (Charles Johnson), 1845-1929",
+        "Boston Stereotype Foundry, electrotyper",
+        "S. E. Cassino & Co, publisher"
+      ],
+      "date": "1883",
+      "contributor": "Smithsonian Libraries",
+      "source_url": "https://archive.org/details/manualoftaxiderm00mayn/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/manualoftaxiderm00mayn/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601809.us.archive.org/BookReader/BookReaderJSIA.php?id=manualoftaxiderm00mayn&itemPath=%2F35%2Fitems%2Fmanualoftaxiderm00mayn&server=ia601809.us.archive.org&subPrefix=manualoftaxiderm00mayn&format=json",
+      "ocr_url": "https://archive.org/download/manualoftaxiderm00mayn/manualoftaxiderm00mayn_djvu.xml",
+      "ocr_size": [
+        2114,
+        3493
+      ],
+      "word_boxes": [
+        [
+          729,
+          803,
+          786,
+          868
+        ],
+        [
+          820,
+          804,
+          1123,
+          882
+        ],
+        [
+          1156,
+          804,
+          1356,
+          883
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/manualoftaxiderm00mayn-n5.jpg",
+          "url": "https://archive.org/download/manualoftaxiderm00mayn/page/n5_w850.jpg",
+          "sha256": "4c38468d5c8be94838c321bbc842b5b42e830bf6d1841fbf0eb595e1427ab53e"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/manualoftaxiderm00mayn-n6.jpg",
+          "url": "https://archive.org/download/manualoftaxiderm00mayn/page/n6_w850.jpg",
+          "sha256": "9a1db1da467c7565cb77bbeaf5e9c4de814df9e9d04f21e7a668783b4b95fa3e"
+        }
+      ]
+    },
+    {
+      "id": "colouredillustra11842meye",
+      "group_id": "ia-colouredillustra11842meye",
+      "split": "validation",
+      "caption": "British Birds, Eggs.",
+      "title": "Coloured illustrations of British birds, and their eggs",
+      "creator": [
+        "Meyer, H. L. (Henry Leonard), d. 1864",
+        "Meyer, H. L. (Henry Leonard), d. 1864. Illustrations of British birds",
+        "Rutter, Daniel, former owner. DSI",
+        "Rolle, Mark, former owner. DSI",
+        "S. & J. Bentley, Wilson & Fley, printer",
+        "S. & J. Bentley and Henry Fley, printer"
+      ],
+      "date": "1842",
+      "contributor": "Smithsonian Libraries",
+      "source_url": "https://archive.org/details/colouredillustra11842meye/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/colouredillustra11842meye/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600707.us.archive.org/BookReader/BookReaderJSIA.php?id=colouredillustra11842meye&itemPath=%2F30%2Fitems%2Fcolouredillustra11842meye&server=ia600707.us.archive.org&subPrefix=colouredillustra11842meye&format=json",
+      "ocr_url": "https://archive.org/download/colouredillustra11842meye/colouredillustra11842meye_djvu.xml",
+      "ocr_size": [
+        1984,
+        3250
+      ],
+      "word_boxes": [
+        [
+          240,
+          687,
+          875,
+          813
+        ],
+        [
+          999,
+          689,
+          1529,
+          824
+        ],
+        [
+          723,
+          992,
+          1048,
+          1079
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/colouredillustra11842meye-n5.jpg",
+          "url": "https://archive.org/download/colouredillustra11842meye/page/n5_w850.jpg",
+          "sha256": "aba10ff2b4007cecb65337a31ffcba14fc1bdae5113edfde233ee654b28138a2"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/colouredillustra11842meye-n6.jpg",
+          "url": "https://archive.org/download/colouredillustra11842meye/page/n6_w850.jpg",
+          "sha256": "8e3e23131ba2f06cfe1c4e2f837b0b2373fb379a73ccd718028f8a1430e3c8b2"
+        }
+      ]
+    },
+    {
+      "id": "graygenealogybei00raym",
+      "group_id": "ia-graygenealogybei00raym",
+      "split": "train",
+      "caption": "Being a Genealogical Record and History of the Descendants of And Also Including",
+      "title": "Gray genealogy : being a genealogical record and history of the descendants of John Gray, of Beverly, Mass., and also including sketches of other Gray families",
+      "creator": "Raymond, Marcius Denison, 1833-1911",
+      "date": "1887",
+      "contributor": "Allen County Public Library Genealogy Center",
+      "source_url": "https://archive.org/details/graygenealogybei00raym/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/graygenealogybei00raym/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601603.us.archive.org/BookReader/BookReaderJSIA.php?id=graygenealogybei00raym&itemPath=%2F17%2Fitems%2Fgraygenealogybei00raym&server=ia601603.us.archive.org&subPrefix=graygenealogybei00raym&format=json",
+      "ocr_url": "https://archive.org/download/graygenealogybei00raym/graygenealogybei00raym_djvu.xml",
+      "ocr_size": [
+        1948,
+        3180
+      ],
+      "word_boxes": [
+        [
+          195,
+          1264,
+          389,
+          1324
+        ],
+        [
+          389,
+          1264,
+          454,
+          1311
+        ],
+        [
+          454,
+          1264,
+          836,
+          1326
+        ],
+        [
+          836,
+          1265,
+          1064,
+          1311
+        ],
+        [
+          1064,
+          1266,
+          1196,
+          1312
+        ],
+        [
+          1196,
+          1267,
+          1443,
+          1327
+        ],
+        [
+          1443,
+          1268,
+          1527,
+          1329
+        ],
+        [
+          1527,
+          1268,
+          1607,
+          1314
+        ],
+        [
+          688,
+          1379,
+          1073,
+          1426
+        ],
+        [
+          1073,
+          1380,
+          1132,
+          1441
+        ],
+        [
+          599,
+          1839,
+          772,
+          1886
+        ],
+        [
+          772,
+          1838,
+          935,
+          1886
+        ],
+        [
+          935,
+          1839,
+          1212,
+          1900
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/graygenealogybei00raym-n3.jpg",
+          "url": "https://archive.org/download/graygenealogybei00raym/page/n3_w850.jpg",
+          "sha256": "bd9b8e1236c1be85d85830946b946c38b1917bcd8af874c3428e9fada06671a1"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/graygenealogybei00raym-n4.jpg",
+          "url": "https://archive.org/download/graygenealogybei00raym/page/n4_w850.jpg",
+          "sha256": "96409e5c1a7fe3fb4e54ff57b07b6521e247bde965898263f34c5b98f4ee1275"
+        }
+      ]
+    },
+    {
+      "id": "historyofgallati00chic",
+      "group_id": "ia-historyofgallati00chic",
+      "split": "train",
+      "caption": "and Williamson Counties,",
+      "title": "History of Gallatin, Saline, Hamilton, Franklin and Williamson counties, Illinois, from the earliest time to the present : together with ... biographical sketches, notes, reminiscences, etc",
+      "creator": null,
+      "date": "1887",
+      "contributor": "Allen County Public Library Genealogy Center",
+      "source_url": "https://archive.org/details/historyofgallati00chic/page/n5/mode/2up",
+      "rights_url": "https://archive.org/metadata/historyofgallati00chic/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia601608.us.archive.org/BookReader/BookReaderJSIA.php?id=historyofgallati00chic&itemPath=%2F29%2Fitems%2Fhistoryofgallati00chic&server=ia601608.us.archive.org&subPrefix=historyofgallati00chic&format=json",
+      "ocr_url": "https://archive.org/download/historyofgallati00chic/historyofgallati00chic_djvu.xml",
+      "ocr_size": [
+        2065,
+        3261
+      ],
+      "word_boxes": [
+        [
+          392,
+          1034,
+          626,
+          1198
+        ],
+        [
+          626,
+          1034,
+          1240,
+          1194
+        ],
+        [
+          1240,
+          1034,
+          1652,
+          1206
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 6,
+          "viewer_index": 5,
+          "file": "source/historyofgallati00chic-n5.jpg",
+          "url": "https://archive.org/download/historyofgallati00chic/page/n5_w850.jpg",
+          "sha256": "0b05374d775f1ca8dd4f120625b11c3ed3ac4f2061a4ba525ebefb2f01f5864f"
+        },
+        {
+          "side": "R",
+          "leaf": 7,
+          "viewer_index": 6,
+          "file": "source/historyofgallati00chic-n6.jpg",
+          "url": "https://archive.org/download/historyofgallati00chic/page/n6_w850.jpg",
+          "sha256": "2696176f386f085ae6335b8d29ec977830722058d02203a25a1a66329460ff4d"
+        }
+      ]
+    },
+    {
+      "id": "buddhistbirth00daviuoft",
+      "group_id": "ia-buddhistbirth00daviuoft",
+      "split": "train",
+      "caption": "Broadway Translations “Age cannot wither her, nor custom stale Her infinite variety.”",
+      "title": "Buddhist birth-stories; Jataka tales. The commentarial introd. entitled Nidanakatha; the story of the lineage. Translated from V. Fausböll's ed. of the Pali text by T.W. Rhys Davids. New and rev. ed. by Mrs. Rhys Davids",
+      "creator": [
+        "Davids, Thomas William Rhys, 1843-1922",
+        "Davids, Caroline Augusta (Foley) Rhys, d. 1942"
+      ],
+      "date": "1878",
+      "contributor": "Robarts - University of Toronto",
+      "source_url": "https://archive.org/details/buddhistbirth00daviuoft/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/buddhistbirth00daviuoft/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600505.us.archive.org/BookReader/BookReaderJSIA.php?id=buddhistbirth00daviuoft&itemPath=%2F29%2Fitems%2Fbuddhistbirth00daviuoft&server=ia600505.us.archive.org&subPrefix=buddhistbirth00daviuoft&format=json",
+      "ocr_url": "https://archive.org/download/buddhistbirth00daviuoft/buddhistbirth00daviuoft_djvu.xml",
+      "ocr_size": [
+        1956,
+        3262
+      ],
+      "word_boxes": [
+        [
+          176,
+          254,
+          872,
+          372
+        ],
+        [
+          872,
+          250,
+          1698,
+          352
+        ],
+        [
+          341,
+          1204,
+          526,
+          1261
+        ],
+        [
+          526,
+          1206,
+          732,
+          1245
+        ],
+        [
+          732,
+          1198,
+          936,
+          1243
+        ],
+        [
+          936,
+          1198,
+          1077,
+          1250
+        ],
+        [
+          1077,
+          1211,
+          1196,
+          1240
+        ],
+        [
+          1196,
+          1199,
+          1399,
+          1240
+        ],
+        [
+          1399,
+          1193,
+          1517,
+          1236
+        ],
+        [
+          376,
+          1281,
+          509,
+          1324
+        ],
+        [
+          509,
+          1279,
+          730,
+          1336
+        ],
+        [
+          730,
+          1275,
+          963,
+          1331
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/buddhistbirth00daviuoft-n3.jpg",
+          "url": "https://archive.org/download/buddhistbirth00daviuoft/page/n3_w850.jpg",
+          "sha256": "4b25a586e753aaa4d644158f63dd434a96a4873470408ad41aa7ace170857390"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/buddhistbirth00daviuoft-n4.jpg",
+          "url": "https://archive.org/download/buddhistbirth00daviuoft/page/n4_w850.jpg",
+          "sha256": "62020bd501f12e3cdbaa3dbf4b9ba2de7090635308a441363d97941735888f08"
+        }
+      ]
+    },
+    {
+      "id": "directionsforcol00bend",
+      "group_id": "ia-directionsforcol00bend",
+      "split": "validation",
+      "caption": "Honorary Curator of the Department of Oology.",
+      "title": "Directions for collecting, preparing, and preserving birds eggs and nests",
+      "creator": [
+        "Bendire, Charles, 1836-1897",
+        "Smithsonian Institution",
+        "United States National Museum"
+      ],
+      "date": "1891",
+      "contributor": "Smithsonian Libraries",
+      "source_url": "https://archive.org/details/directionsforcol00bend/page/n3/mode/2up",
+      "rights_url": "https://archive.org/metadata/directionsforcol00bend/metadata/possible-copyright-status",
+      "rights_statement": "NOT_IN_COPYRIGHT",
+      "viewer_metadata_url": "https://ia600506.us.archive.org/BookReader/BookReaderJSIA.php?id=directionsforcol00bend&itemPath=%2F7%2Fitems%2Fdirectionsforcol00bend&server=ia600506.us.archive.org&subPrefix=directionsforcol00bend&format=json",
+      "ocr_url": "https://archive.org/download/directionsforcol00bend/directionsforcol00bend_djvu.xml",
+      "ocr_size": [
+        2064,
+        3573
+      ],
+      "word_boxes": [
+        [
+          534,
+          1991,
+          698,
+          2023
+        ],
+        [
+          717,
+          1991,
+          851,
+          2016
+        ],
+        [
+          866,
+          1989,
+          906,
+          2022
+        ],
+        [
+          916,
+          1989,
+          968,
+          2014
+        ],
+        [
+          985,
+          1989,
+          1184,
+          2021
+        ],
+        [
+          1200,
+          1988,
+          1240,
+          2019
+        ],
+        [
+          1253,
+          1988,
+          1367,
+          2019
+        ]
+      ],
+      "leaves": [
+        {
+          "side": "L",
+          "leaf": 4,
+          "viewer_index": 3,
+          "file": "source/directionsforcol00bend-n3.jpg",
+          "url": "https://archive.org/download/directionsforcol00bend/page/n3_w850.jpg",
+          "sha256": "0fd993e3da639dce1790865bcd24c3cd042f9b79f98721d4d8699fa2b681a9bc"
+        },
+        {
+          "side": "R",
+          "leaf": 5,
+          "viewer_index": 4,
+          "file": "source/directionsforcol00bend-n4.jpg",
+          "url": "https://archive.org/download/directionsforcol00bend/page/n4_w850.jpg",
+          "sha256": "a25aa55202e56d20a6e75a0234b9e694d427716d58a41b6a4e50629576ba6272"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,851 @@
+{
+  "collection": "British Library Digitised Books - Plates",
+  "selection": "BL-plates-captioned-v1",
+  "caption_method": "Printed titles and labels transcribed, translated into English or identified from period sources and bibliographic records. The source of each caption is recorded separately.",
+  "crop_coordinates": "Pixels (left, top, right, bottom) after counterclockwise rotation.",
+  "plates": [
+    {
+      "source_image": "images/bl-003585142-010015.jpg",
+      "source_sha256": "0a351e190b9d47807cd3bac1d4bdaa05af07d6966ad93a8ebf2aa9e48c10205e",
+      "split": "validation",
+      "caption": "Saragosse, north facade.",
+      "printed_text": "SARAGOSSE. Façade du nord",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        235,
+        67,
+        2314,
+        1349
+      ]
+    },
+    {
+      "source_image": "images/bl-001212679-180000.jpg",
+      "source_sha256": "4651da387b9e9727547855e03f66809b1245f22a0b852232bca60b434c51541a",
+      "split": "validation",
+      "caption": "Courtyard of an Alföld peasant.",
+      "printed_text": "COURTYARD OF AN ALFÖLD PEASANT.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        174,
+        47,
+        1711,
+        1074
+      ]
+    },
+    {
+      "source_image": "images/bl-003055004-010001.jpg",
+      "source_sha256": "f0688f7ed02b76d19e4cee98d2060aafedf69c49e6bbbe919285a1aaae6121eb",
+      "split": "validation",
+      "caption": "Map of France, Belgium and the Netherlands.",
+      "printed_text": "FRANCE, BELGIUM, AND THE NETHERLANDS.",
+      "caption_source": "printed_map_title",
+      "rotation_ccw": 270
+    },
+    {
+      "source_image": "images/bl-002580722-000009.jpg",
+      "source_sha256": "44a7b04c713c276096687a417649c48cf58271030e83ad5552d21b41186d5c01",
+      "split": "validation",
+      "caption": "The Falls of the Ikopa.",
+      "printed_text": "THE FALLS OF THE IKOPA.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        62,
+        40,
+        1966,
+        1166
+      ]
+    },
+    {
+      "source_image": "images/bl-003276271-010009.jpg",
+      "source_sha256": "b8c42054552c1ab51e4c5e91db11cec1eb31b9c04160b2f6373d2eab5d0988e0",
+      "split": "validation",
+      "caption": "The entry of Philippović into Sarajevo.",
+      "printed_text": "Der Einzug Philippović’s in Serajewo.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        165,
+        0,
+        2310,
+        1397
+      ]
+    },
+    {
+      "source_image": "images/bl-000365881-180018.jpg",
+      "source_sha256": "2927504ebc8c1482c0003280f09c57dd388c15bcd0988ad3b1d669c07ec7b403",
+      "split": "validation",
+      "caption": "Burgos Cathedral.",
+      "printed_text": "BURGOS CATHEDRAL.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        57,
+        144,
+        1288,
+        1988
+      ]
+    },
+    {
+      "source_image": "images/bl-001967528-000000.jpg",
+      "source_sha256": "123a49ad043b7974cfedb1439710e5b72c539f3a91587a79f1c3b146b262c387",
+      "split": "validation",
+      "caption": "A Souvenir of Kentucky.",
+      "printed_text": "A Souvenir of Kentucky.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        169,
+        173,
+        1658,
+        1647
+      ]
+    },
+    {
+      "source_image": "images/bl-003120096-000012.jpg",
+      "source_sha256": "a4a37ee503efda04f25a170d0c181cc5b34b7bd83c0f5dfb1ad8a7694092f3b1",
+      "split": "validation",
+      "caption": "Feeding ducks.",
+      "printed_text": "FEEDING DUCKS.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        241,
+        199,
+        2370,
+        1790
+      ]
+    },
+    {
+      "source_image": "images/bl-002329572-180009.jpg",
+      "source_sha256": "7b54ae8eef2a1d7fcd9e452809a4576ed301c23aa1ec37e682084971a870ce29",
+      "split": "validation",
+      "caption": "In San Remo.",
+      "printed_text": "IN SAN REMO.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270
+    },
+    {
+      "source_image": "images/bl-002173641-300024.jpg",
+      "source_sha256": "dd627e03f2446d3c042aac2a619f8254c900625054dfc341811c35f2bc6e3a90",
+      "split": "validation",
+      "caption": "At the dynamo machines.",
+      "printed_text": "Bei den Dynamo-Maschinen.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        145,
+        190,
+        1428,
+        2130
+      ]
+    },
+    {
+      "source_image": "images/bl-003564058-120004.jpg",
+      "source_sha256": "51f5720acdcedc2f404a13006dddd035f55e9f1895f9638041d265c1bc85a0af",
+      "split": "validation",
+      "caption": "Doctor Syntax disputing his bill with the landlady.",
+      "printed_text": "DOCTOR SYNTAX DISPUTING HIS BILL WITH THE LANDLADY.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        87,
+        26,
+        2362,
+        1412
+      ]
+    },
+    {
+      "source_image": "images/bl-000990975-020013.jpg",
+      "source_sha256": "33a46a41982b506cfc51a18f2a3255ba7a9eeeee3bde64d862e4270fcd2447c8",
+      "split": "validation",
+      "caption": "A scene on the banks of the Niger.",
+      "printed_text": "SCÈNE DES BORDS DU NIGER.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        0,
+        218,
+        1257,
+        1605
+      ]
+    },
+    {
+      "source_image": "images/bl-000138697-010011.jpg",
+      "source_sha256": "73ae9fb1c80f970af221f31280036ee5d996b51b76551f03b9f9534e4881b270",
+      "split": "train",
+      "caption": "Warwick Castle.",
+      "printed_text": "WARWICK CASTLE.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        167,
+        161,
+        1875,
+        1542
+      ]
+    },
+    {
+      "source_image": "images/bl-002159899-020021.jpg",
+      "source_sha256": "31e9c7dc82a414279cc076eace7f7d1cb714718f776f29665360a30eaf48dfd7",
+      "split": "train",
+      "caption": "Thames Ditton.",
+      "printed_text": "THAMES DITTON.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270
+    },
+    {
+      "source_image": "images/bl-003394020-120002.jpg",
+      "source_sha256": "06e8a3834b4d05406f9ce4bfc84c956802c5a00c62c6351734ac3d02ba2e4996",
+      "split": "train",
+      "caption": "The hammel and the shed for the cattle.",
+      "printed_text": "THE HAMMEL. / THE SHED FOR THE CATTLE.",
+      "caption_source": "printed_labels",
+      "rotation_ccw": 270
+    },
+    {
+      "source_image": "images/bl-001384218-020023.jpg",
+      "source_sha256": "66dced7fd94b6c18c7cdcf1631796dfea275c45c869bb6c4537ca6b9e7a74327",
+      "split": "train",
+      "caption": "Craig Beinn nan-Eun, east of Uam Var, Braes of Doune.",
+      "printed_text": "FIG. 74.—Craig Beinn nan-Eun (2067 feet), east of Uam Var, Braes of Doune.",
+      "caption_source": "printed_text_excerpt",
+      "rotation_ccw": 0,
+      "crop_box": [
+        12,
+        177,
+        1610,
+        1048
+      ]
+    },
+    {
+      "source_image": "images/bl-003883007-300007.jpg",
+      "source_sha256": "bf22bb7e7f7f68671ba2f94837ae5ee3e0cb2bbb83163584819a43ccfb57bd34",
+      "split": "train",
+      "caption": "Ancient timber warehouses or granaries, as seen from the Bridge House Garden in 1830.",
+      "printed_text": "ANCIENT TIMBER WAREHOUSES OR GRANARIES, AS SEEN FROM THE BRIDGE HOUSE GARDEN IN 1830.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        185,
+        145,
+        1802,
+        1411
+      ]
+    },
+    {
+      "source_image": "images/bl-002359721-180005.jpg",
+      "source_sha256": "e813abb7589630ecf8371d5ab634b9d69ef4301093f80380d7c7ca4295079cd8",
+      "split": "train",
+      "caption": "Quite “optional” of course.",
+      "printed_text": "QUITE “OPTIONAL” OF COURSE.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        48,
+        157,
+        1232,
+        1530
+      ]
+    },
+    {
+      "source_image": "images/bl-000501014-300001.jpg",
+      "source_sha256": "a14d61ee03a416bf361c3913a19a18659e60911f909375a63e27bedddd66867c",
+      "split": "train",
+      "caption": "Sunnyside, with vignette of Sleepy Hollow.",
+      "printed_text": "SUNNYSIDE, WITH VIGNETTE OF SLEEPY HOLLOW.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        125,
+        155,
+        1234,
+        1590
+      ]
+    },
+    {
+      "source_image": "images/bl-000237799-010000.jpg",
+      "source_sha256": "886917503a0853b445f145281185f66ecdad0e77c9273bf510365dc8a4b7f833",
+      "split": "train",
+      "caption": "South-west from Gray’s Peak.",
+      "printed_text": "SOUTH-WEST FROM GRAY’S PEAK.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        115,
+        0,
+        1505,
+        1851
+      ]
+    },
+    {
+      "source_image": "images/bl-000626598-000021.jpg",
+      "source_sha256": "3755d186b7fb7fb7784fb39a1aabd363384a0e73aefc5222bef28a563cfb35b1",
+      "split": "train",
+      "caption": "The Haunted Palace.",
+      "printed_text": "THE HAUNTED PALACE.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        125,
+        180,
+        1211,
+        1773
+      ]
+    },
+    {
+      "source_image": "images/bl-001765214-120008.jpg",
+      "source_sha256": "13424cb5b73604a31234abc613d13ecee1b15a8e2aece2625a6945aed48437fb",
+      "split": "train",
+      "caption": "Lady Gray petitioning Edward IV for her lands.",
+      "printed_text": "LADY GRAY PETITIONING EDWᴰ. IV FOR HER LANDS",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        165,
+        59,
+        2765,
+        2144
+      ]
+    },
+    {
+      "source_image": "images/bl-002453459-000004.jpg",
+      "source_sha256": "b41d95c428c2467cdf3599e34088fe52e30b879750867f76b147f3055b7e4dd7",
+      "split": "train",
+      "caption": "Pelargonium cotyledonis.",
+      "printed_text": "PELARGONIUM COTYLEDONIS.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        48,
+        94,
+        1569,
+        2411
+      ]
+    },
+    {
+      "source_image": "images/bl-003207819-020008.jpg",
+      "source_sha256": "be40680f135b5905c7023c133e5d9de839a24a580845e888de7a760d50b97bcc",
+      "split": "train",
+      "caption": "From the history of Björneborg.",
+      "printed_text": "BORG.",
+      "caption_source": "cropped_title_and_volume_metadata",
+      "rotation_ccw": 0,
+      "caption_evidence_url": "https://data.nationallibrary.fi/bib/me/W00061226000",
+      "caption_evidence_note": "The plate prints only the trailing BORG. The volume title is Björneborgs stads historia; no street, year or viewpoint is recovered from the photograph."
+    },
+    {
+      "source_image": "images/bl-003943648-010008.jpg",
+      "source_sha256": "83903613f32f41314581fd3207d269462b15fc763440afe220c356cfa5b49f49",
+      "split": "train",
+      "caption": "Gladstone’s Land.",
+      "printed_text": "GLADSTONE’S LAND",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        61,
+        179,
+        1149,
+        1698
+      ]
+    },
+    {
+      "source_image": "images/bl-001404297-020007.jpg",
+      "source_sha256": "1cb28c71a9e4584489a4d411c027390daa6e1e9433552fc0d2568eae87943e64",
+      "split": "train",
+      "caption": "View from the Schwarzsee Hotel.",
+      "printed_text": "Aussicht beim Schwarzsee-Hotel.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        27,
+        105,
+        1851,
+        1135
+      ]
+    },
+    {
+      "source_image": "images/bl-003405258-180012.jpg",
+      "source_sha256": "7de0dbe6f5d403e0f8b2658f934f4af2f46516bd055e3bf726bf0009d9102f46",
+      "split": "train",
+      "caption": "A Japanese Garden.",
+      "printed_text": "A Japanese Garden.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        174,
+        87,
+        1713,
+        1143
+      ]
+    },
+    {
+      "source_image": "images/bl-002287542-020009.jpg",
+      "source_sha256": "1467a2cc452d19d66d5955c45e819ddcb994de811392c17336c69c83604b31e1",
+      "split": "train",
+      "caption": "Spear ornamentation from New Ireland and New Hanover.",
+      "printed_text": "XXXVII.",
+      "caption_source": "source_volume_plate_reference",
+      "rotation_ccw": 0,
+      "caption_evidence_url": "https://archive.org/download/bub_gb_ey0-AAAAYAAJ/bub_gb_ey0-AAAAYAAJ_djvu.txt",
+      "caption_evidence_note": "The top border identifies plate XXXVII. In the digitized source text, search for ‘Speer-’ and ‘XXXVI und XXXVII’ together. The author explicitly identifies these as spear ornaments from Neu-Irland and Neu-Hannover.",
+      "crop_box": [
+        232,
+        148,
+        2480,
+        3495
+      ]
+    },
+    {
+      "source_image": "images/bl-001750158-000025.jpg",
+      "source_sha256": "a0eb6529635382b2b022e3cd7b148d874f3d3acdb1fd37f535e8c910fd2b6f5e",
+      "split": "train",
+      "caption": "Heron Bridge.",
+      "printed_text": "Heron Bridge.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        164,
+        196,
+        1553,
+        1404
+      ]
+    },
+    {
+      "source_image": "images/bl-002107587-010013.jpg",
+      "source_sha256": "3ec7256aae39ee18582a48fac028a1ad0011d77c5c9c912be8d33f16d1bed23e",
+      "split": "train",
+      "caption": "Sigillarids: Sigillaria reticulata, Sigillaria laevigata, and a leaf of Sigillaria elegans.",
+      "printed_text": "Figs. 491–495.—Sigillarids: 491. Sigillaria reticulata (after Lesquereux). 492. Sigillaria Græseri. 493. Sigillaria lævigata (European). 494. Sigillaria obovata (after Lesquereux). 495. Leaf of Sigillaria elegans (after Dawson).",
+      "caption_source": "printed_title_and_label_excerpt",
+      "rotation_ccw": 0
+    },
+    {
+      "source_image": "images/bl-003062389-020011.jpg",
+      "source_sha256": "9476b53e558c46a236f22d67edd503d4e8b61c434f40bba16972270bc75548da",
+      "split": "train",
+      "caption": "A tracing taken with a differential hemodynamometer.",
+      "printed_text": "Tracé pris avec l'hémodynamomètre différentiel.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        9,
+        117,
+        1462,
+        1142
+      ]
+    },
+    {
+      "source_image": "images/bl-002062003-120022.jpg",
+      "source_sha256": "b7adc08344aada8b3f55c81e5a9f43e1667840aa58e2d7664f35f9b60f35a7ad",
+      "split": "train",
+      "caption": "Trollhättan Falls.",
+      "printed_text": "Cataractes de Trollhättan",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        205,
+        141,
+        2081,
+        1372
+      ]
+    },
+    {
+      "source_image": "images/bl-000684415-180013.jpg",
+      "source_sha256": "9e80593b04b6d28c09e92b86a7fe7ffb1f1737fa7526d841847a734ec5943856",
+      "split": "train",
+      "caption": "Porto Piccolo, Syracuse.",
+      "printed_text": "Siracusa. — Porto Piccolo.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        4,
+        144,
+        3099,
+        1867
+      ]
+    },
+    {
+      "source_image": "images/bl-000455971-020004.jpg",
+      "source_sha256": "d9cfa3038e614a8288778f7c1a4b48b88912dd4337166a6d8ca1da7a8f5af5ab",
+      "split": "train",
+      "caption": "The Chapel of St. Apoline, Guernsey.",
+      "printed_text": "The Chapel of St. Apoline, Guernsey.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        169,
+        119,
+        1636,
+        1174
+      ]
+    },
+    {
+      "source_image": "images/bl-003510759-020016.jpg",
+      "source_sha256": "0b1dca78490e4c6f1d4a3fac5b85c1aa84583c9ddda6d61333e7f558f057e790",
+      "split": "train",
+      "caption": "A highland hamlet.",
+      "printed_text": "A HIGHLAND HAMLET.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270
+    },
+    {
+      "source_image": "images/bl-003076779-180002.jpg",
+      "source_sha256": "3fdc6d5dd5e78a0cc29078cb0aa82e178edd5857a24e6e1b52ab2837a04bc6af",
+      "split": "train",
+      "caption": "Plan of the Chapel of Suffrages.",
+      "printed_text": "Pianta della Cappella dei Suffragi",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        124,
+        202,
+        1399,
+        2262
+      ]
+    },
+    {
+      "source_image": "images/bl-002300912-180020.jpg",
+      "source_sha256": "82b4f8f6c231549730fc63be9a188eb4b57106aaa4dbf8d4102143238eaa4214",
+      "split": "train",
+      "caption": "Side view of City Hall.",
+      "printed_text": "SIDE VIEW OF CITY HALL.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0
+    },
+    {
+      "source_image": "images/bl-003928021-010006.jpg",
+      "source_sha256": "926cb912fc50418b4aa792e611e55fa5bfe8b867fd8c87b7e30588297b41a079",
+      "split": "train",
+      "caption": "Farm view in winter.",
+      "printed_text": "FARM VIEW IN WINTER.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        141,
+        207,
+        1368,
+        1987
+      ]
+    },
+    {
+      "source_image": "images/bl-003626576-180026.jpg",
+      "source_sha256": "c63bad7cf01a46d71804a0997d786209491f198661c33b70bf56447898f7a56a",
+      "split": "train",
+      "caption": "Mount Victoria, a distant view from seven miles.",
+      "printed_text": "MOUNT VICTORIA (DISTANT VIEW—SEVEN MILES).",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        204,
+        133,
+        2044,
+        1279
+      ]
+    },
+    {
+      "source_image": "images/bl-003628790-020000.jpg",
+      "source_sha256": "1321f8f0952640a26faf17ca2a0ff92fa07e74fd09f7a1749e16e9cea03ea88e",
+      "split": "train",
+      "caption": "Hanover Square in 1750.",
+      "printed_text": "HANOVER SQUARE IN 1750.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270
+    },
+    {
+      "source_image": "images/bl-001988639-000005.jpg",
+      "source_sha256": "b327b6607482552226849ed69ae5a6e552a3536898f6590ddabfff2962bd8095",
+      "split": "train",
+      "caption": "London Bridge just before the houses were pulled down in 1760.",
+      "printed_text": "[London Bridge just before the Houses were pulled down in 1760.]",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        107,
+        135,
+        1626,
+        1253
+      ]
+    },
+    {
+      "source_image": "images/bl-000360604-000017.jpg",
+      "source_sha256": "ad7e022e6a2bca6c40c54bff06b646fe0c221e335bc298d3eac89dfe4643b3a8",
+      "split": "train",
+      "caption": "The grand entrance to the Brighton Pavilion.",
+      "printed_text": "THE GRAND ENTRANCE TO THE BRIGHTON PAVILION.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        133,
+        88,
+        1822,
+        1144
+      ]
+    },
+    {
+      "source_image": "images/bl-001697699-120016.jpg",
+      "source_sha256": "f62eb16eda666b2265aae8e91b2dcc2d97ec56fe399f6cd74ff9bec20351bacc",
+      "split": "train",
+      "caption": "South East Angle of the Parthenon.",
+      "printed_text": "SOUTH EAST ANGLE",
+      "caption_source": "printed_title_fragment_and_catalogued_plate_title",
+      "rotation_ccw": 0,
+      "caption_evidence_url": "https://www.splrarebooks.com/collection/view/a-journey-through-albania-and-other-provinces-of-turkey-in-europe-and-asia-",
+      "caption_evidence_note": "A second copy lists plate 8 as South East Angle of the Parthenon. The collection scan ends after the opening words."
+    },
+    {
+      "source_image": "images/bl-002267278-020024.jpg",
+      "source_sha256": "9d6c4464434b9ae5d226e4daab5fd9d439a7437416847ee76612570c88b278de",
+      "split": "train",
+      "caption": "A Tancas pen for young pigs.",
+      "printed_text": "Tancas-Soll für junge Schweine.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        46,
+        202,
+        2194,
+        1931
+      ]
+    },
+    {
+      "source_image": "images/bl-000188894-000007.jpg",
+      "source_sha256": "8691e6f592d778fbb3fc95db10beeeed45bbb787e5666de9841097cafacecb40",
+      "split": "train",
+      "caption": "Casa Grande of the Gila.",
+      "printed_text": "Casa Grande of the Gila.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 90,
+      "crop_box": [
+        218,
+        113,
+        2064,
+        1154
+      ]
+    },
+    {
+      "source_image": "images/bl-003112345-020026.jpg",
+      "source_sha256": "0e0e6b09858648a2b898bb7def72bf92d8edaedc59b57a8851741707219bcbdd",
+      "split": "train",
+      "caption": "Cargreen.",
+      "printed_text": "CARGREEN (p. 58).",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        207,
+        151,
+        2052,
+        1440
+      ]
+    },
+    {
+      "source_image": "images/bl-002126093-300023.jpg",
+      "source_sha256": "98a13d6ec9d78fdc60ccfd68e4d6e5eeb9a95db7dd256e84b3106a92620a3d38",
+      "split": "train",
+      "caption": "Rubber manufacture, exhibit of Eug. Pavoux.",
+      "printed_text": "La mise en œuvre du caoutchouc (exposition de M. Eug. Pavoux)",
+      "caption_source": "translated_source_plate_index",
+      "rotation_ccw": 0,
+      "caption_evidence_url": "https://archive.org/details/congoieetbelgiqu00lema/page/244/mode/1up",
+      "crop_box": [
+        140,
+        203,
+        1378,
+        1977
+      ]
+    },
+    {
+      "source_image": "images/bl-003330972-020018.jpg",
+      "source_sha256": "b9368111cb76885ac1290f371aa1d1abaaa2f35b2d6eefc240007641af0c1708",
+      "split": "train",
+      "caption": "Yosemite Valley.",
+      "printed_text": "Vallée du Yosemite",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        107,
+        176,
+        1457,
+        2106
+      ]
+    },
+    {
+      "source_image": "images/bl-000411313-000013.jpg",
+      "source_sha256": "0dafafff0bca7aa9db2ad1f79382c90049af16f83b4e56919146735e3a743791",
+      "split": "train",
+      "caption": "Hardyknute.",
+      "printed_text": "Hardyknute.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        25,
+        109,
+        1195,
+        2041
+      ]
+    },
+    {
+      "source_image": "images/bl-001208564-010004.jpg",
+      "source_sha256": "a614d7184e47bb695808521d7d3eef12e3cc42aa3cb88260c3ba4678ee0c5185",
+      "split": "train",
+      "caption": "A western dwelling.",
+      "printed_text": "A WESTERN DWELLING.",
+      "caption_source": "matching_printed_plate_caption",
+      "rotation_ccw": 0,
+      "caption_evidence_url": "https://libsysdigi.library.illinois.edu/oca/Books2008-06/historyofgreenec00clap/historyofgreenec00clap.pdf#page=100",
+      "crop_box": [
+        35,
+        145,
+        1451,
+        1376
+      ]
+    },
+    {
+      "source_image": "images/bl-003522085-300003.jpg",
+      "source_sha256": "c8da7c2aa4bedec582f0a9f598597ab42674a9d454178a21ca21bb04e52515a1",
+      "split": "train",
+      "caption": "Death of Mary, relief on the south portal.",
+      "printed_text": "Fig. 113. Tod der Maria, Relief am Südportal.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        48,
+        121,
+        1637,
+        1138
+      ]
+    },
+    {
+      "source_image": "images/bl-000490401-120006.jpg",
+      "source_sha256": "7808b0d7a146219d35a9b719d63014bb56b434c6eff01fbe78f14001233ab3f7",
+      "split": "train",
+      "caption": "The Junumushtoomee.",
+      "printed_text": "The Junumushtoomee.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        99,
+        38,
+        2891,
+        1904
+      ]
+    },
+    {
+      "source_image": "images/bl-002531611-300000.jpg",
+      "source_sha256": "278a259354173917c03d57b202295fd475b0615a6b08bd22d8ec9b4638dafc35",
+      "split": "train",
+      "caption": "The Sphinx.",
+      "printed_text": "The Sphinx.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        253,
+        88,
+        2216,
+        1385
+      ]
+    },
+    {
+      "source_image": "images/bl-003627212-300026.jpg",
+      "source_sha256": "ff9e402ca51d0ea6b63ebf9b25057c44fe40c7ee41266d52660e6711a0affc45",
+      "split": "train",
+      "caption": "The assassination of Regent Moray at Linlithgow.",
+      "printed_text": "THE ASSASSINATION OF REGENT MORAY AT LINLITHGOW.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        153,
+        164,
+        1537,
+        2469
+      ]
+    },
+    {
+      "source_image": "images/bl-001465920-300004.jpg",
+      "source_sha256": "1162d7829b1bd6fb46f4ee6078c2f2ad0b8ad4ce7839b841b460c5a47a763816",
+      "split": "train",
+      "caption": "A woman going through her various feats.",
+      "printed_text": "“A WOMAN GOING THROUGH HER VARIOUS FEATS.”",
+      "caption_source": "printed_title",
+      "rotation_ccw": 90
+    },
+    {
+      "source_image": "images/bl-003076690-120007.jpg",
+      "source_sha256": "916516dc541f3171b1cde465c2b7ef498f1dc22e0a4dc90c4903faebb9765817",
+      "split": "train",
+      "caption": "Sir Thomas Fairfax, knight, general of the forces raised by the Parliament.",
+      "printed_text": "SIR THOMAS FAIRFAX Knight. General of the Forces raised by the Parliament.",
+      "caption_source": "matching_printed_plate_caption",
+      "rotation_ccw": 0,
+      "caption_evidence_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/The_travels_and_memoirs_%28IA_b22017719_0002%29.pdf",
+      "crop_box": [
+        3,
+        249,
+        1706,
+        2491
+      ]
+    },
+    {
+      "source_image": "images/bl-003207505-000002.jpg",
+      "source_sha256": "52b8c92f9cddf1151511d0d37ce63bfdc96b37567050d9574a9d388c3b79cba7",
+      "split": "train",
+      "caption": "Ringgold Hose House, 1876.",
+      "printed_text": "RINGGOLD HOSE HOUSE—1876.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        111,
+        195,
+        1062,
+        1871
+      ]
+    },
+    {
+      "source_image": "images/bl-003920569-120010.jpg",
+      "source_sha256": "fb6e445097aae2fe8f6f7ab66f37f05bf44c57d83e6d83308e60a050e563e4f1",
+      "split": "train",
+      "caption": "Steephill Cottage, Earl of Dysart.",
+      "printed_text": "Steephill Cottage, Earl of Dysart.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 270,
+      "crop_box": [
+        169,
+        213,
+        2013,
+        1243
+      ]
+    },
+    {
+      "source_image": "images/bl-002369122-010024.jpg",
+      "source_sha256": "fac616861c6a750de3335ac5ba748acf54630e642a6c70b6caaf71a6ab37a7c0",
+      "split": "train",
+      "caption": "Island of Palmaria, opposite La Spezia.",
+      "printed_text": "ISLAND OF PALMARIA, OPPOSITE LA SPEZIA.",
+      "caption_source": "printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        117,
+        152,
+        1877,
+        1105
+      ]
+    },
+    {
+      "source_image": "images/bl-001922616-180024.jpg",
+      "source_sha256": "26b80ebf1e68631ff9b369402e98f72c72c115ef9c05174c70745417870ab8c2",
+      "split": "train",
+      "caption": "Manjema girl.",
+      "printed_text": "Manjema-Mädchen.",
+      "caption_source": "translated_printed_title",
+      "rotation_ccw": 0,
+      "crop_box": [
+        184,
+        174,
+        1124,
+        1763
+      ]
+    }
+  ]
+}

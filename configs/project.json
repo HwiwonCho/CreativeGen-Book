@@ -1,0 +1,25 @@
+{
+  "model": "models/sdxl-base",
+  "modules": {
+    "background": {
+      "dataset": "National Gallery of Art Open Data — public-domain photographs",
+      "source": "https://github.com/NationalGalleryOfArt/opendata",
+      "manifest": "data/background/manifest.jsonl",
+      "adapter": "runs/background"
+    },
+    "illustration": {
+      "dataset": "British Library Digitised Books — Plates",
+      "source": "https://bl.iro.bl.uk/entities/product/70635ff1-908e-457f-8bbf-f88ce0d9627f",
+      "manifest": "data/illustration/manifest.jsonl",
+      "adapter": "runs/illustration"
+    },
+    "book": {
+      "dataset": "Public-domain book scans from Internet Archive, with transcriptions and masks",
+      "manifest": "data/book/manifest.jsonl",
+      "adapter": "runs/book",
+      "integrated_adapter": "runs/book_joint_01",
+      "font": "configs/fonts/DejaVuSerif.ttf",
+      "layout": "configs/book-layout.json"
+    }
+  }
+}
