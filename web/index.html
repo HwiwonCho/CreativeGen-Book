@@ -59,6 +59,8 @@
     .download { text-decoration: none; display: inline-flex; align-items: center; min-height: 35px }
     .frame { display: grid; place-items: center; background: #e8e6da; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; aspect-ratio: 3 / 2 }
     .frame img { width: 100%; height: 100%; object-fit: contain; display: block }
+    .background-preview { margin-bottom: 22px }
+    .image-label { font-size: .88rem; font-weight: 650; color: var(--muted); margin: 0 0 7px }
     .fallback { color: var(--muted); text-align: center; margin: 18px; font-size: .95rem }
     figcaption { margin-top: 12px; font: 1.15rem/1.45 var(--serif); color: #35463a; overflow-wrap: anywhere }
     @media (max-width: 800px) {
@@ -108,9 +110,19 @@
       <section id="result" class="result" aria-labelledby="result-title">
         <div class="result-head">
           <h2 id="result-title">예시 결과</h2>
-          <a class="download" id="download" hidden download="creativegen-book.png">PNG 저장</a>
         </div>
+        <figure class="background-preview" aria-labelledby="background-label">
+          <figcaption class="image-label" id="background-label">생성된 배경</figcaption>
+          <div class="frame">
+            <img id="background" alt="갈매기 문장으로 생성한 책 배경" hidden>
+            <p id="background-status" class="fallback" role="status">배경을 불러오는 중이에요.</p>
+          </div>
+        </figure>
         <figure>
+          <div class="result-head">
+            <span class="image-label">최종 책</span>
+            <a class="download" id="download" hidden download="creativegen-book.png">PNG 저장</a>
+          </div>
           <div class="frame">
             <img id="book" alt="왼쪽에 갈매기 삽화가 있고 오른쪽에 영문 문장이 인쇄된 예시 책">
             <p id="fallback" class="fallback" hidden>완성된 책이 여기에 표시돼요.</p>
@@ -184,6 +196,18 @@
       }
     });
 
+    function showBackground(url, description) {
+      const image = $("background");
+      const status = $("background-status");
+      image.hidden = true;
+      status.hidden = false;
+      status.textContent = "배경을 불러오는 중이에요.";
+      image.alt = description;
+      image.onload = () => { image.hidden = false; status.hidden = true; };
+      image.onerror = () => { image.hidden = true; status.hidden = false; status.textContent = "배경을 불러오지 못했어요."; };
+      image.src = url;
+    }
+
     function render(job) {
       if (job.id !== currentJob) return;
       if (job.sentence) $("sentence").value = job.sentence;
@@ -200,6 +224,7 @@
         $("download").hidden = false;
         $("caption").textContent = job.sentence;
         $("caption").hidden = false;
+        showBackground(url + "/background", job.sentence + " 문장으로 생성한 배경");
         $("book").src = url + "/image";
         notice("책이 완성됐어요. PNG로 저장할 수 있어요.");
       } else if (job.state === "failed") {
@@ -292,6 +317,7 @@
       const fragment = new URLSearchParams(location.hash.slice(1));
       const invite = fragment.get("invite");
       if (invite !== null) history.replaceState(history.state, "", location.pathname + location.search);
+      showBackground("/api/example/background", "갈매기가 수면 위를 나는 문장으로 생성한 배경");
       $("book").src = "/api/example";
       if (invite !== null) {
         const invalid = "초대 링크가 만료되었거나 유효하지 않아요. 팀 접속 코드로 접속해 주세요.";

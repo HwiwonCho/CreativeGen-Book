@@ -22,7 +22,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGE = Path(__file__).with_name("index.html")
 WEEK = 7 * 24 * 60 * 60
 COOKIE = "creativegen_session"
-JOB_PATH = re.compile(r"/api/jobs/([a-f0-9]{32})(?:/(image|download))?")
+JOB_PATH = re.compile(r"/api/jobs/([a-f0-9]{32})(?:/(image|download|background))?")
+FINAL_IMAGE = Path("spread/final.png")
+BACKGROUND_IMAGE = Path("background/background.png")
 
 
 def team_invite(key):
@@ -189,8 +191,9 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_data(200, PAGE.read_bytes(), "text/html; charset=utf-8")
         if get and path == "/api/health":
             return self.reply(200, dict(service="creativegen-book", authenticated=bool(owner)))
-        if get and path == "/api/example":
-            example = ROOT / "runs/seagull/spread/final.png"
+        if get and path in ("/api/example", "/api/example/background"):
+            file = BACKGROUND_IMAGE if path == "/api/example/background" else FINAL_IMAGE
+            example = ROOT / "runs/seagull" / file
             if example.is_file():
                 return self.send_data(200, example.read_bytes(), "image/png")
         if not get and path == "/api/login":
@@ -218,7 +221,8 @@ class Handler(BaseHTTPRequestHandler):
                     return self.reply(200, state)
                 if state["state"] != "completed":
                     raise RequestError(409, "완성된 이미지를 아직 열 수 없어요.")
-                image = self.server.jobs.folder / job_id / "result/spread/final.png"
+                file = BACKGROUND_IMAGE if asset == "background" else FINAL_IMAGE
+                image = self.server.jobs.folder / job_id / "result" / file
                 extra = [("Content-Disposition", f'attachment; filename="book-{state["seed"]}.png"')] if asset == "download" else []
                 return self.send_data(200, image.read_bytes(), "image/png", extra)
         raise RequestError(404, "페이지를 찾을 수 없어요.")
