@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>CreativeGen · 문장으로 만드는 책</title>
+  <style>
+    :root {
+      --paper: #f7f5ef; --surface: #fffefa; --ink: #202e25; --muted: #58645b;
+      --line: #d6d7ca; --green: #224d3d; --light: #e6eee5; --error: #8e342d;
+      --sans: "Inter", "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      --serif: "Baskervville", Georgia, "Batang", "AppleMyungjo", serif;
+    }
+    * { box-sizing: border-box }
+    [hidden] { display: none !important }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--sans); word-break: keep-all }
+    button, input, textarea { font: inherit }
+    button, a { -webkit-tap-highlight-color: transparent }
+    button { cursor: pointer }
+    button:disabled { cursor: wait; opacity: .65 }
+    :focus-visible { outline: 3px solid #468475; outline-offset: 4px }
+    header { border-bottom: 1px solid var(--line) }
+    .bar, main { width: min(1420px, 100%); margin: auto; padding-inline: clamp(20px, 5.6vw, 84px) }
+    .bar { display: flex; align-items: center; justify-content: space-between; min-height: 70px }
+    .wordmark { font: 600 24px/1 var(--serif); letter-spacing: -.07em }
+    .jump { color: var(--muted); font-size: .87rem; text-underline-offset: 4px }
+    main { padding-block: clamp(32px, 5.5vw, 84px) 64px }
+    .layout { display: grid; grid-template-columns: minmax(290px, .76fr) minmax(0, 1.24fr); align-items: start; gap: clamp(25px, 4.5vw, 80px) }
+    h1, h2, p, figure, fieldset { margin: 0 }
+    h1 { font: 700 clamp(2.05rem, 3.35vw, 3.35rem)/1.22 var(--serif); letter-spacing: -.065em }
+    .intro { margin-top: 13px; color: var(--muted); line-height: 1.65 }
+    .input-panel { margin-top: 32px }
+    .label, legend { display: block; font-size: .9rem; font-weight: 700; margin-bottom: 9px }
+    textarea, input { border: 1px solid #a3ada0; border-radius: 6px; width: 100%; background: var(--surface); color: var(--ink) }
+    textarea { display: block; min-height: 112px; padding: 14px; resize: vertical; font: 1.2rem/1.5 var(--serif) }
+    textarea::placeholder { color: #70776d; opacity: 1 }
+    input { min-height: 44px; padding: 8px 12px; min-width: 0 }
+    .primary { border: none; background: var(--green); color: white; border-radius: 6px; font-weight: 700; min-height: 48px; padding: 10px 18px }
+    .primary:hover:enabled { background: #183d30 }
+    .generate { width: 100%; margin-top: 14px }
+    fieldset { border: 0; padding: 0; min-width: 0; margin-top: 22px }
+    legend { color: var(--muted); font-size: .8rem; padding: 0 }
+    .choices { display: flex; flex-wrap: wrap; gap: 8px }
+    .choices button, .download, .secondary { background: transparent; color: var(--green); border: 1px solid #b4bfb0; border-radius: 5px; padding: 6px 12px; font-size: .86rem; line-height: 1.4 }
+    .choices button:hover:enabled, .download:hover, .secondary:hover { background: var(--light) }
+    .login { margin-top: 26px; border-left: 3px solid #68836b; padding-left: 15px }
+    .login-row { display: flex; gap: 8px }
+    .login-row .secondary { flex: none; font-weight: 700 }
+    .notice { margin-top: 12px; font-size: .9rem; color: var(--muted); overflow-wrap: anywhere }
+    .notice:empty { display: none }
+    .notice.error { color: var(--error) }
+    .progress { padding-top: 16px }
+    .progress p { font-size: .9rem; color: var(--green); font-weight: 650 }
+    .progress progress { display: block; width: 100%; height: 5px; margin-top: 8px; border: none; accent-color: var(--green) }
+    .result { min-width: 0 }
+    .result-head { min-height: 36px; display: flex; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 12px }
+    h2 { font-size: 1.1rem; letter-spacing: -.035em }
+    .download { text-decoration: none; display: inline-flex; align-items: center; min-height: 35px }
+    .frame { display: grid; place-items: center; background: #e8e6da; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; aspect-ratio: 3 / 2 }
+    .frame img { width: 100%; height: 100%; object-fit: contain; display: block }
+    .fallback { color: var(--muted); text-align: center; margin: 18px; font-size: .95rem }
+    figcaption { margin-top: 12px; font: 1.15rem/1.45 var(--serif); color: #35463a; overflow-wrap: anywhere }
+    @media (max-width: 800px) {
+      .bar { min-height: 56px }
+      .layout { grid-template-columns: 1fr; gap: 36px }
+      .input-panel { margin-top: 23px }
+      .result { border-top: 1px solid var(--line); padding-top: 20px }
+      .choices button, .download, .secondary { min-height: 40px }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar"><span class="wordmark" lang="en">CreativeGen</span><a class="jump" href="#result">결과 보기 ↓</a></div>
+  </header>
+  <main>
+    <div class="layout">
+      <section aria-labelledby="title">
+        <h1 id="title">문장으로 만드는 책</h1>
+        <p class="intro">영문 한 문장을 입력하면 그 장면을 배경과 삽화로 그리고, 오른쪽 페이지에 문장을 인쇄해요.</p>
+        <form id="generate-form" class="input-panel">
+          <label class="label" for="sentence">영문 문장</label>
+          <textarea id="sentence" name="sentence" lang="en" required maxlength="180" spellcheck="false" placeholder="A sailboat crosses the lake at dawn."></textarea>
+          <button id="generate" class="primary generate" type="submit" disabled>책 생성하기</button>
+        </form>
+        <form id="login" class="login" hidden>
+          <label class="label" for="team-key">팀 접속 코드</label>
+          <div class="login-row">
+            <input id="team-key" type="password" name="code" autocomplete="off" required>
+            <button class="secondary" type="submit">접속하기</button>
+          </div>
+        </form>
+        <div id="progress" class="progress" hidden>
+          <p id="stage" role="status"></p>
+          <progress id="meter" max="4" value="0" aria-labelledby="stage"></progress>
+        </div>
+        <p id="notice" class="notice" role="status" aria-live="polite"></p>
+        <fieldset id="examples">
+          <legend>예시 문장</legend>
+          <div class="choices">
+            <button type="button" data-sentence="A red fox stands in the snow.">눈밭의 여우</button>
+            <button type="button" data-sentence="A sailboat crosses the lake at dawn.">새벽의 돛단배</button>
+            <button type="button" data-sentence="Rain falls on a city street at night.">비 오는 도시</button>
+          </div>
+        </fieldset>
+      </section>
+      <section id="result" class="result" aria-labelledby="result-title">
+        <div class="result-head">
+          <h2 id="result-title">예시 결과</h2>
+          <a class="download" id="download" hidden download="creativegen-book.png">PNG 저장</a>
+        </div>
+        <figure>
+          <div class="frame">
+            <img id="book" alt="왼쪽에 갈매기 삽화가 있고 오른쪽에 영문 문장이 인쇄된 예시 책">
+            <p id="fallback" class="fallback" hidden>완성된 책이 여기에 표시돼요.</p>
+          </div>
+          <figcaption id="caption" lang="en">A seagull flies just above the surface of the water.</figcaption>
+        </figure>
+      </section>
+    </div>
+  </main>
+  <script>
+    "use strict";
+    const $ = id => document.getElementById(id);
+    const jobKey = "creativegen.book.job";
+    const stages = {
+      starting: ["모델을 준비하고 있어요.", 0],
+      background: ["배경을 그리고 있어요.", 0],
+      illustration: ["왼쪽 페이지의 삽화를 그리고 있어요.", 1],
+      book: ["책의 종이와 펼친 페이지를 만들고 있어요.", 2],
+      spread: ["장면을 결합하고 오른쪽 페이지에 인쇄하고 있어요.", 3]
+    };
+    let currentJob = "";
+    try { currentJob = sessionStorage.getItem(jobKey) || ""; } catch {}
+    let authenticated = false;
+    let busy = false;
+    let timer;
+
+    function remember(id) {
+      currentJob = id;
+      try {
+        if (id) sessionStorage.setItem(jobKey, id);
+        else sessionStorage.removeItem(jobKey);
+      } catch {}
+    }
+    function notice(message = "", error = false) {
+      $("notice").textContent = message;
+      $("notice").classList.toggle("error", error);
+    }
+    function controls() {
+      $("generate").disabled = busy || !authenticated;
+      $("generate").textContent = busy ? "책을 만드는 중…" : "책 생성하기";
+      $("sentence").readOnly = busy;
+      $("examples").disabled = busy;
+      $("login").hidden = authenticated;
+    }
+    function needLogin(message = "계속하려면 팀 접속 코드를 입력해 주세요.") {
+      authenticated = false;
+      busy = false;
+      $("progress").hidden = true;
+      controls();
+      notice(message);
+    }
+    async function api(path, data) {
+      const options = {credentials: "same-origin", cache: "no-store"};
+      if (data !== undefined) Object.assign(options, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)});
+      const response = await fetch(path, options);
+      const body = await response.json().catch(() => ({}));
+      if (!response.ok) throw Object.assign(new Error(body.error || body.message || "요청을 처리할 수 없어요."), {status: response.status});
+      return body;
+    }
+    function schedule(fn, delay = 2500) {
+      clearTimeout(timer);
+      timer = setTimeout(fn, delay);
+    }
+    $("book").addEventListener("error", () => {
+      $("book").hidden = true;
+      $("fallback").hidden = false;
+      if (!$("download").hidden) {
+        $("fallback").textContent = "미리보기를 불러오지 못했어요. PNG 저장으로 원본을 열 수 있어요.";
+      } else {
+        $("caption").hidden = true;
+      }
+    });
+
+    function render(job) {
+      if (job.id !== currentJob) return;
+      if (job.sentence) $("sentence").value = job.sentence;
+      busy = job.state !== "completed" && job.state !== "failed";
+      controls();
+      $("progress").hidden = !busy;
+      if (job.state === "completed") {
+        const url = "/api/jobs/" + encodeURIComponent(job.id);
+        $("result-title").textContent = "생성한 책";
+        $("book").alt = "입력한 문장으로 생성한 펼친 책";
+        $("book").hidden = false;
+        $("fallback").hidden = true;
+        $("download").href = url + "/download";
+        $("download").hidden = false;
+        $("caption").textContent = job.sentence;
+        $("caption").hidden = false;
+        $("book").src = url + "/image";
+        notice("책이 완성됐어요. PNG로 저장할 수 있어요.");
+      } else if (job.state === "failed") {
+        remember("");
+        notice(job.error || "생성을 마치지 못했어요. 다시 시도해 주세요.", true);
+      } else {
+        const [label, completed] = stages[job.stage] || stages.starting;
+        $("stage").textContent = label;
+        $("meter").value = completed;
+        notice();
+        schedule(checkJob);
+      }
+    }
+    async function checkJob() {
+      const id = currentJob;
+      if (!id) return;
+      try {
+        render(await api("/api/jobs/" + encodeURIComponent(id)));
+      } catch (error) {
+        if (id !== currentJob) return;
+        if (error.status === 401 || error.status === 403) return needLogin();
+        if (error.status === 404) {
+          remember("");
+          busy = false;
+          controls();
+          $("progress").hidden = true;
+          return notice("이전 생성 기록을 찾을 수 없어요. 새 책을 만들어 주세요.", true);
+        }
+        notice("서버와 다시 연결하고 있어요. 연결되면 생성 상태를 표시할게요.");
+        schedule(checkJob, 5000);
+      }
+    }
+    async function connect() {
+      try {
+        const health = await api("/api/health");
+        if (!health.authenticated) return needLogin();
+        authenticated = true;
+        busy = Boolean(currentJob);
+        controls();
+        notice();
+        if (currentJob) await checkJob();
+      } catch {
+        notice("서버에 연결할 수 없어요. 네트워크 연결을 확인해 주세요. 잠시 후 다시 연결할게요.", true);
+        schedule(connect, 5000);
+      }
+    }
+    $("login").addEventListener("submit", async event => {
+      event.preventDefault();
+      const button = event.currentTarget.querySelector("button");
+      button.disabled = true;
+      try {
+        await api("/api/login", {key: $("team-key").value});
+        $("team-key").value = "";
+        await connect();
+        if (!busy && authenticated) $("sentence").focus();
+      } catch (error) {
+        notice(error.status === 401 || error.status === 403 ? "접속 코드가 맞지 않아요. 다시 확인해 주세요." : "접속할 수 없어요. 잠시 후 다시 시도해 주세요.", true);
+      } finally { button.disabled = false; }
+    });
+    $("generate-form").addEventListener("submit", async event => {
+      event.preventDefault();
+      if (busy || !authenticated) return;
+      const sentence = $("sentence").value.trim();
+      if (!sentence || !/\p{Script=Latin}/u.test(sentence) || /[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(sentence)) {
+        notice("영문 문장 한 개를 입력해 주세요.", true);
+        return $("sentence").focus();
+      }
+      busy = true;
+      controls();
+      notice("생성을 요청하고 있어요.");
+      try {
+        const job = await api("/api/jobs", {sentence});
+        remember(job.id);
+        render(job);
+      } catch (error) {
+        busy = false;
+        controls();
+        if (error.status === 401 || error.status === 403) return needLogin();
+        if (error.status === 409) return notice("다른 책을 만들고 있어요. 잠시 후 다시 눌러 주세요.", true);
+        notice(error.status === 400 ? error.message : "생성 요청을 확인하지 못했어요. 잠시 후 다시 시도해 주세요.", true);
+      }
+    });
+    $("examples").addEventListener("click", event => {
+      const button = event.target.closest("button[data-sentence]");
+      if (!button || busy) return;
+      $("sentence").value = button.dataset.sentence;
+      $("sentence").focus();
+    });
+    async function openStudio() {
+      const fragment = new URLSearchParams(location.hash.slice(1));
+      const invite = fragment.get("invite");
+      if (invite !== null) history.replaceState(history.state, "", location.pathname + location.search);
+      $("book").src = "/api/example";
+      if (invite !== null) {
+        const invalid = "초대 링크가 만료되었거나 유효하지 않아요. 팀 접속 코드로 접속해 주세요.";
+        if (!/^[a-f0-9]{32}$/i.test(invite)) return needLogin(invalid);
+        try {
+          await api("/api/login", {invite});
+        } catch (error) {
+          return needLogin(error.status === 401 || error.status === 403 || error.status === 400
+            ? invalid : "초대 링크에 연결하지 못했어요. 링크를 다시 열거나 팀 접속 코드를 입력해 주세요.");
+        }
+      }
+      await connect();
+    }
+    openStudio();
+  </script>
+</body>
+</html>
