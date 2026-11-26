@@ -4,6 +4,11 @@ import json
 from pathlib import Path
 
 
+BASE_REFERENCE = Path(__file__).resolve().parents[1] / "configs/sdxl-base-files.json"
+MODEL_ID = "stabilityai/stable-diffusion-xl-base-1.0"
+REVISION = "462165984030d82259a11f4367a4eed129e94a7b"
+
+
 def file_digest(path):
     digest = hashlib.sha256()
     with Path(path).open("rb") as stream:
@@ -14,9 +19,8 @@ def file_digest(path):
 
 def verify_base(model_path):
     root = Path(model_path).resolve(strict=True)
-    reference = Path(__file__).resolve().parents[1] / "provenance" / "sdxl-base-files.json"
-    snapshot = json.loads(reference.read_text(encoding="utf-8"))
+    snapshot = json.loads(BASE_REFERENCE.read_text(encoding="utf-8"))
     for relative, expected in snapshot["files"].items():
         if file_digest(root / relative) != expected:
             raise ValueError(f"Model file differs from the pinned SDXL Base snapshot: {relative}")
-    return file_digest(reference)
+    return file_digest(BASE_REFERENCE)

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd -- "$(dirname -- "$0")"
+cd -- "$(dirname -- "$0")/.."
 
 python=${PYTHON:-python3}
 model_args=()
@@ -17,7 +17,7 @@ train_stage() {
     shift 7
     local output="runs/$name" log="logs/$name.log" receipt="runs/$name/completed.sha256"
     local files=("$output/settings.json" "$output/metrics.jsonl" "$output/evaluation.json"
-                 "$output/adapter.safetensors" "$manifest" train.sh)
+                 "$output/adapter.safetensors" "$manifest")
     if [[ $module == book ]]; then
         files+=("$output/conditioner.safetensors")
     fi
@@ -25,7 +25,20 @@ train_stage() {
         files+=(data/book/print_lines_joint.jsonl configs/fonts/DejaVuSerif.ttf runs/book/completed.sha256)
     fi
     if [[ -f $receipt ]]; then
-        sha256sum --quiet --check "$receipt"
+        local script_hash expected actual
+        # The first release recorded the hash and path of its root-level launcher.
+        local first_recipe="a260268bfbadd6334eef2e2279984e217b25de861e97d6841ca1c95377b46618  train.sh"
+        if grep -Fqx "$first_recipe" "$receipt"; then
+            script_hash=$first_recipe
+        else
+            script_hash=$(sha256sum training/train.sh)
+        fi
+        expected=$(sha256sum "${files[@]}")
+        actual=$(sort "$receipt")
+        if [[ $actual != "$(printf '%s\n' "$expected" "$script_hash" | sort)" ]]; then
+            printf 'Checkpoint or recipe mismatch for %s\n' "$name" >&2
+            return 1
+        fi
         printf '%s %s already complete\n' "$(date -Is)" "$name"
         return
     fi
@@ -37,13 +50,13 @@ train_stage() {
     fi
 
     printf '%s starting %s (%s steps); log: %s\n' "$(date -Is)" "$name" "$steps" "$log"
-    if ! "$python" -Bu -m src.train --module "$module" --manifest "$manifest" --output "$output" \
+    if ! "$python" -Bu -m training.train --module "$module" --manifest "$manifest" --output "$output" \
          --size 768 --rank 4 --steps "$steps" --eval-every "$interval" --lr "$lr" --seed "$seed" \
          "${model_args[@]}" "$@" >"$log" 2>&1; then
         tail -n 25 "$log" >&2
         return 1
     fi
-    sha256sum "${files[@]}" >"$receipt.tmp"
+    sha256sum "${files[@]}" training/train.sh >"$receipt.tmp"
     mv -T -- "$receipt.tmp" "$receipt"
     printf '%s completed %s\n' "$(date -Is)" "$name"
 }

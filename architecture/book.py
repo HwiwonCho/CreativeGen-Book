@@ -124,22 +124,3 @@ def render_masks(
     if glyph.getbbox() is None:
         raise ValueError("The chosen font produced no visible ink.")
     return glyph, page
-
-
-def main():
-    import argparse
-
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--sentence", required=True)
-    parser.add_argument("--font", type=Path, required=True)
-    parser.add_argument("--layout", type=Path, required=True)
-    parser.add_argument("--output-dir", type=Path, required=True)
-    args = parser.parse_args()
-    glyph, page = render_masks(args.sentence, args.font, args.layout)
-    args.output_dir.mkdir(parents=True, exist_ok=False)
-    glyph.save(args.output_dir / "glyph.png")
-    page.save(args.output_dir / "right_page.png")
-
-
-if __name__ == "__main__":
-    main()

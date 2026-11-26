@@ -1,6 +1,6 @@
 * text=auto eol=lf
 data/** -text
-provenance/** -text
+configs/sdxl-base-files.json -text
 configs/fonts/** -text
 *.png binary
 *.jpg binary

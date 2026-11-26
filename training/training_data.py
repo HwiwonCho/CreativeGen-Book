@@ -1,21 +1,14 @@
 """Validate per-item training provenance and produce reproducible split records."""
-import hashlib
 import json
 from pathlib import Path
 from urllib.parse import urlparse
 
 from PIL import Image, ImageOps, ImageChops
 
+from architecture.approved_base import file_digest as digest
+
 
 RIGHTS = {"CC0-1.0", "PDM-1.0", "Public Domain", "team-owned"}
-
-
-def digest(path):
-    sha = hashlib.sha256()
-    with Path(path).open("rb") as stream:
-        for chunk in iter(lambda: stream.read(4 * 1024 * 1024), b""):
-            sha.update(chunk)
-    return sha.hexdigest()
 
 
 def read_records(manifest, module):

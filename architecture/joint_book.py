@@ -3,10 +3,7 @@ from dataclasses import asdict, replace
 
 from PIL import Image
 
-if __package__:
-    from . import book
-else:
-    import book
+from . import book
 
 
 def build_prompt(sentence, *, board=False):

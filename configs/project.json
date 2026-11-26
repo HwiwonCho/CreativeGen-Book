@@ -18,8 +18,7 @@
       "manifest": "data/book/manifest.jsonl",
       "adapter": "runs/book",
       "integrated_adapter": "runs/book_joint_01",
-      "font": "configs/fonts/DejaVuSerif.ttf",
-      "layout": "configs/book-layout.json"
+      "font": "configs/fonts/DejaVuSerif.ttf"
     }
   }
 }

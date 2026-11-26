@@ -7,88 +7,10 @@ import math
 from pathlib import Path
 import random
 
-if __package__:
-    from . import background, illustration, book
-    from .training_data import digest, read_records
-else:
-    import background
-    import illustration
-    import book
-    from training_data import digest, read_records
-
-
-MODEL_ID = "stabilityai/stable-diffusion-xl-base-1.0"
-REVISION = "462165984030d82259a11f4367a4eed129e94a7b"
-
-
-def attach_adapter(unet, rank):
-    import torch
-    from torch import nn
-    from torch.nn import functional as F
-
-    class AdapterLinear(nn.Module):
-        def __init__(self, linear):
-            super().__init__()
-            self.base = linear.requires_grad_(False)
-            self.in_features = linear.in_features
-            self.out_features = linear.out_features
-            self.lora_A = nn.Parameter(torch.empty(rank, self.in_features, device=linear.weight.device, dtype=torch.float32))
-            self.lora_B = nn.Parameter(torch.zeros(self.out_features, rank, device=linear.weight.device, dtype=torch.float32))
-            nn.init.kaiming_uniform_(self.lora_A, a=math.sqrt(5))
-
-        @property
-        def weight(self):
-            return self.base.weight
-
-        def forward(self, value):
-            native = self.base(value)
-            with torch.autocast(device_type=value.device.type, enabled=False):
-                update = F.linear(F.linear(value.float(), self.lora_A), self.lora_B)
-            return native + update.to(native.dtype)
-
-    if rank < 1:
-        raise ValueError("LoRA rank must be positive")
-    unet.requires_grad_(False)
-    targets = [(name, mod) for name, mod in unet.named_modules()
-               if isinstance(mod, nn.Linear) and name.endswith((".attn1.to_q", ".attn1.to_v", ".attn2.to_q", ".attn2.to_v"))]
-    if not targets:
-        raise ValueError("Expected native UNet attention projections")
-    for name, mod in targets:
-        parent, key = name.rsplit(".", 1)
-        setattr(unet.get_submodule(parent), key, AdapterLinear(mod))
-    return {name: p for name, p in unet.named_parameters() if p.requires_grad}
-
-
-def load_adapter(unet, run):
-    """Attach trained weights to a fresh base UNet, for evaluation or inference."""
-    import torch
-    from safetensors.torch import load_file
-    run = Path(run)
-    settings = json.loads((run / "settings.json").read_text())
-    if settings["base_id"] != MODEL_ID or settings["base_revision"] != REVISION:
-        raise ValueError("Adapter base model differs")
-    params = attach_adapter(unet, settings["rank"])
-    weights = load_file(str(run / "adapter.safetensors"))
-    if set(params) != set(weights):
-        raise ValueError("Adapter parameter names differ")
-    with torch.no_grad():
-        for name, p in params.items():
-            value = weights[name]
-            if p.shape != value.shape or not torch.isfinite(value).all():
-                raise ValueError(f"Invalid adapter tensor: {name}")
-            p.copy_(value)
-    return unet.eval()
-
-
-def load_book_conditioner(unet, run):
-    from safetensors.torch import load_file
-    if __package__:
-        from .book_conditioner import BookConditionEncoder
-    else:
-        from book_conditioner import BookConditionEncoder
-    cond = BookConditionEncoder(unet.conv_in.out_channels)
-    cond.load_state_dict(load_file(str(Path(run)/"conditioner.safetensors")), strict=True)
-    return cond.to(device=unet.conv_in.weight.device).eval()
+from architecture import background, illustration, book
+from architecture.adapters import attach_adapter, load_adapter, load_book_conditioner
+from architecture.approved_base import MODEL_ID, REVISION, verify_base
+from .training_data import digest, read_records
 
 
 def encode_examples(root, size, rows, module, manifest_dir, joint_font=None):
@@ -99,12 +21,8 @@ def encode_examples(root, size, rows, module, manifest_dir, joint_font=None):
     from transformers import CLIPTextModel, CLIPTextModelWithProjection, CLIPTokenizer
 
     if joint_font:
-        if __package__:
-            from .joint_book import build_prompt
-            from .joint_data import line_hint
-        else:
-            from joint_book import build_prompt
-            from joint_data import line_hint
+        from architecture.joint_book import build_prompt
+        from .joint_data import line_hint
     elif module == "book":
         def build_prompt(caption):
             return book.build_condition(caption).scene_prompt
@@ -226,10 +144,7 @@ def train(args, splits, base_digest):
     cond = None
     trainable = list(params.values())
     if args.module == "book":
-        if __package__:
-            from .book_conditioner import BookConditionEncoder, condition_unet
-        else:
-            from book_conditioner import BookConditionEncoder, condition_unet
+        from architecture.book_conditioner import BookConditionEncoder, condition_unet
         cond = (load_book_conditioner(unet, args.init_book) if args.init_book
                 else BookConditionEncoder(unet.conv_in.out_channels).cuda())
         trainable.extend(cond.parameters())
@@ -374,16 +289,9 @@ def main():
     if not args.manifest.is_file():
         p.error(f"No dataset manifest for {args.module}: {args.manifest}")
     splits = read_records(args.manifest, args.module)
-    if __package__:
-        from .approved_base import verify_base
-    else:
-        from approved_base import verify_base
     base_digest = verify_base(args.model)
     if args.joint_lines:
-        if __package__:
-            from .joint_data import training_views
-        else:
-            from joint_data import training_views
+        from .joint_data import training_views
         splits = training_views(splits, args.joint_lines)
         if args.init_book:
             parent = json.loads((args.init_book/"settings.json").read_text(encoding="utf-8"))

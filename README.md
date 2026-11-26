@@ -2,6 +2,12 @@
 
 영문 한 문장을 받아 왼쪽에는 삽화, 오른쪽에는 원문이 인쇄된 책을 만든다. 책 둘레의 배경도 같은 문장에서 생성한다. 배경·삽화·책 모듈은 같은 SDXL Base와 각자 학습한 가중치를 사용한다. 마지막 단계에서 세 이미지를 배치해 역확산하고, 오른쪽 페이지의 글자 마스크에 맞춰 잠재값을 보정한다.
 
+| 코드 | 역할 |
+|---|---|
+| `architecture/` | SDXL용 LoRA, 글자·페이지 조건 인코더, 모듈별 입력 조건 |
+| `pipeline/` | 영문 한 문장에서 배경·삽화·책을 생성하고 최종 이미지를 저장 |
+| `training/` | 학습 데이터를 읽고 네 단계를 차례로 학습·검증 |
+
 ## 실행
 
 저장소 루트에서 실행한다. 학습 서버 환경은 Linux, Python 3.12.3, PyTorch 2.6.0과 CUDA 12.4이다. 추론에는 20GB GPU 한 장을 사용한다.
@@ -21,11 +27,11 @@ import json, os
 from pathlib import Path
 from huggingface_hub import snapshot_download
 
-model = json.loads(Path("provenance/sdxl-base-files.json").read_text())
+model = json.loads(Path("configs/sdxl-base-files.json").read_text())
 snapshot_download(model["model_id"], revision=model["revision"],
                   allow_patterns=list(model["files"]), local_dir=os.environ["SDXL_BASE"])
 PY
-PYTHON="$(command -v python)" bash train.sh
+PYTHON="$(command -v python)" bash training/train.sh
 ```
 
 | 학습 순서 | 업데이트 | 학습률 | 가중치 저장 위치 |
@@ -40,7 +46,7 @@ PYTHON="$(command -v python)" bash train.sh
 학습이 끝나면 문장과 시드를 넣는다.
 
 ```bash
-python -m src.pipeline --model "$SDXL_BASE" \
+python -m pipeline --model "$SDXL_BASE" \
   --sentence "A seagull flies just above the surface of the water." \
   --seed 241125 --output runs/seagull
 ```
@@ -49,7 +55,7 @@ python -m src.pipeline --model "$SDXL_BASE" \
 
 ## 자료와 방법
 
-배경은 NGA 공개 사진 60장, 삽화는 British Library의 도판 60장으로 각각 48장을 학습, 12장을 검증에 사용한다. 책은 Internet Archive의 공개 도서 스캔 20건으로 시작해 글자 조건 학습에서 27건을 사용한다. 작품별 링크·권리 표시·분할은 `data/`의 각 명세에 있고, 전사·크롭·쪽 배치의 근거는 `provenance/`에 있다. 글꼴은 DejaVu Serif이며 이용허락문을 함께 보관한다. [NGA Open Access](https://www.nga.gov/artworks/free-images-and-open-access) · [British Library 도판](https://bl.iro.bl.uk/entities/product/70635ff1-908e-457f-8bbf-f88ce0d9627f) · [책 스캔 출처](provenance/book_spreads.json) · [추가 스캔](provenance/book_print_extra.json) · [글꼴 이용허락문](configs/fonts/LICENSE-DejaVu)
+배경은 NGA 공개 사진 60장, 삽화는 British Library의 도판 60장으로 각각 48장을 학습, 12장을 검증에 사용한다. 책은 Internet Archive의 공개 도서 스캔 20건으로 시작해 글자 조건 학습에서 27건을 사용한다. 작품별 링크·권리 표시·분할은 `data/`의 각 명세에 있고, 전사·크롭·쪽 배치의 근거는 `data/sources/`에 있다. 글꼴은 DejaVu Serif이며 이용허락문을 함께 보관한다. [NGA Open Access](https://www.nga.gov/artworks/free-images-and-open-access) · [British Library 도판](https://bl.iro.bl.uk/entities/product/70635ff1-908e-457f-8bbf-f88ce0d9627f) · [책 스캔 출처](data/sources/book_spreads.json) · [추가 스캔](data/sources/book_print_extra.json) · [글꼴 이용허락문](configs/fonts/LICENSE-DejaVu)
 
 모델과 구현에는 SDXL Base, Diffusers, LoRA를 사용했다. 개인화 책 프로젝트의 구성을 초기 아이디어로 참고했다. [SDXL Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) · [SDXL 논문](https://arxiv.org/abs/2307.01952) · [Diffusers](https://github.com/huggingface/diffusers) · [LoRA](https://arxiv.org/abs/2106.09685) · [참고한 책 프로젝트](https://github.com/yunseopark-kaist/personalized-book-gen)
 
