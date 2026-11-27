@@ -1,0 +1,70 @@
+{
+  "weight": 0.7,
+  "scores": {
+    "0.4": {
+      "n": 8,
+      "exact": 4,
+      "cer": 0.02843601895734597
+    },
+    "0.7": {
+      "n": 8,
+      "exact": 8,
+      "cer": 0.0
+    },
+    "0.9": {
+      "n": 8,
+      "exact": 8,
+      "cer": 0.0
+    }
+  },
+  "rows": [
+    {
+      "text": "Notwithstanding this instance of treachery or re-",
+      "0.4": "Notwithstanding this mstance of treachery or re-",
+      "0.7": "Notwithstanding this instance of treachery or re-",
+      "0.9": "Notwithstanding this instance of treachery or re-"
+    },
+    {
+      "text": "of white that runs in a parallel line entirely along the",
+      "0.4": "of white that runs in a parallel line entirely along the",
+      "0.7": "of white that runs in a parallel line entirely along the",
+      "0.9": "of white that runs in a parallel line entirely along the"
+    },
+    {
+      "text": "world, has in a great measure thinned the deserts of",
+      "0.4": "world, has in a great measure thinned the deserts of",
+      "0.7": "world, has in a great measure thinned the deserts of",
+      "0.9": "world, has in a great measure thinned the deserts of"
+    },
+    {
+      "text": "noble animal subservient to the convenience and power",
+      "0.4": "noble animal subservient to the convenience and power",
+      "0.7": "noble animal subservient to the convenience and power",
+      "0.9": "noble animal subservient to the convenience and power"
+    },
+    {
+      "text": "and alarmed by so dreadful a spectacle, he instantly",
+      "0.4": "and alarmed by so deeadfml a vpeetnele, he instantly",
+      "0.7": "and alarmed by so dreadful a spectacle, he instantly",
+      "0.9": "and alarmed by so dreadful a spectacle, he instantly"
+    },
+    {
+      "text": "of the pastures where he is found, may easily have",
+      "0.4": "ef the pastures where he is found, may casily have",
+      "0.7": "of the pastures where he is found, may easily have",
+      "0.9": "of the pastures where he is found, may easily have"
+    },
+    {
+      "text": "are several distinct marks to be found, the most striking",
+      "0.4": "are several distinct marks to be found, the most striking",
+      "0.7": "are several distinct marks to be found, the most striking",
+      "0.9": "are several distinct marks to be found, the most striking"
+    },
+    {
+      "text": "and vigour, he promises to be serviceable in his more",
+      "0.4": "and vigour, he promises to be serviveabie in his more",
+      "0.7": "and vigour, he promises to be serviceable in his more",
+      "0.9": "and vigour, he promises to be serviceable in his more"
+    }
+  ]
+}

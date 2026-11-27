@@ -66,7 +66,7 @@ class Jobs:
                 return lock.read()
         return None
 
-    def page_text(self, sentence):
+    def page_text(self, sentence, learned=False):
         if not isinstance(sentence, str) or not sentence.strip():
             raise RequestError(400, "책에 넣을 영문 문장이나 짧은 문단을 입력해 주세요.")
         sentence = sentence.replace("\r\n", "\n").replace("\r", "\n").strip()
@@ -77,14 +77,24 @@ class Jobs:
             raise RequestError(400, "현재 책에는 영문을 인쇄할 수 있어요. 글을 영어로 입력해 주세요.")
         if any(not c.isprintable() and c != "\n" for c in sentence):
             raise RequestError(400, "인쇄할 수 없는 제어 문자가 있어요. 일반 텍스트로 붙여 넣어 주세요.")
+        if learned:
+            sentence = " ".join(sentence.split())
+            unsupported = set(read_record(ROOT / "checkpoints/print/fit.json")["unseen_training_characters"])
+            unknown = sorted(c for c in set(sentence) if not 32 <= ord(c) < 127 or c in unsupported)
+            if unknown:
+                raise RequestError(400, "학습한 영문 활자에 없는 문자예요. " + " ".join(unknown))
+            return sentence
         try:
             joint_book.board_conditions(sentence, self.font, PAGE_SIZE)
         except book.TextDoesNotFit as exc:
             raise RequestError(400, "입력한 글이 오른쪽 페이지 한 쪽을 넘어요. 문단이나 줄바꿈을 조금 줄여 주세요.") from exc
         return sentence
 
-    def create(self, sentence, owner):
-        sentence = self.page_text(sentence)
+    def create(self, sentence, owner, mode="original"):
+        if mode not in ("original", "learned"):
+            raise RequestError(400, "알 수 없는 생성 방식이에요.")
+        learned = mode == "learned"
+        sentence = self.page_text(sentence, learned)
         import fcntl
         with self.guard, self.lock_file.open("a+", encoding="ascii") as lock:
             try:
@@ -97,7 +107,7 @@ class Jobs:
             job = self.folder / job_id
             job.mkdir()
             seed = secrets.randbelow(2**32)
-            request = dict(owner=owner, sentence=sentence, seed=seed)
+            request = dict(owner=owner, sentence=sentence, seed=seed, mode=mode)
             (job / "request.json").write_text(json.dumps(request), encoding="utf-8")
             lock.seek(0)
             lock.truncate()
@@ -106,6 +116,10 @@ class Jobs:
             cmd = [sys.executable, "-u", "-m", "pipeline", "--sentence=" + sentence,
                    "--seed", str(seed), "--output", str(job / "result"), "--model", str(self.model),
                    "--size", str(PAGE_SIZE)]
+            if learned:
+                cmd = [sys.executable, "-u", "-m", "pipeline.printed_spread", "--sentence=" + sentence,
+                       "--seed", str(seed), "--output", str(job / "result"), "--model", str(self.model),
+                       "--book", str(ROOT / "runs/book_joint_01"), "--field", str(ROOT / "checkpoints/print")]
             # The child owns the GPU lock even if the web server restarts.
             with (job / "run.log").open("wb") as log:
                 proc = subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=log,
@@ -205,7 +219,7 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         get = self.command == "GET"
         owner = self.cookies()
-        if get and path == "/":
+        if get and path in ("/", "/print", "/print/"):
             return self.send_data(200, PAGE.read_bytes(), "text/html; charset=utf-8")
         if get and path == "/api/health":
             return self.reply(200, dict(service="creativegen-book", authenticated=bool(owner)))
@@ -214,6 +228,8 @@ class Handler(BaseHTTPRequestHandler):
             example = ROOT / "runs/seagull" / file
             if example.is_file():
                 return self.send_data(200, example.read_bytes(), "image/png")
+        if get and path == "/api/example/print":
+            return self.send_data(200, (ROOT/"checkpoints/print/example.png").read_bytes(), "image/png")
         if not get and path == "/api/login":
             auth = self.payload()
             key = auth.get("key")
@@ -230,7 +246,8 @@ class Handler(BaseHTTPRequestHandler):
             if not owner:
                 raise RequestError(401, "팀 접속 코드를 입력해 주세요.")
             if not get and path == "/api/jobs":
-                return self.reply(202, self.server.jobs.create(self.payload().get("sentence"), owner))
+                payload=self.payload()
+                return self.reply(202, self.server.jobs.create(payload.get("sentence"), owner, payload.get("mode","original")))
             match = JOB_PATH.fullmatch(path)
             if get and match:
                 job_id, asset = match.groups()

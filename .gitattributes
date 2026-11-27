@@ -6,3 +6,5 @@ configs/fonts/** -text
 *.jpg binary
 *.jpeg binary
 *.ttf binary
+*.safetensors binary
+*.pt binary

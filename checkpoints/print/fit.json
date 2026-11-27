@@ -1,0 +1,34 @@
+{
+  "lines": 1078,
+  "character_crops": 62562,
+  "unseen_training_characters": [
+    "#",
+    "$",
+    "%",
+    "+",
+    "<",
+    "=",
+    ">",
+    "@",
+    "X",
+    "\\",
+    "]",
+    "^",
+    "`",
+    "{",
+    "|",
+    "}"
+  ],
+  "steps": 1200,
+  "seed": 112713,
+  "reader_loss_weight": 0.12,
+  "reader_sha256": "3f0e8089660286ffa6d8fbee9117240ca4ed02c4074d441ff0ed565114c6e421",
+  "manifest_sha256": "9515371efd3f93b03940d9c68eb51ba339b0161947ddd8ae19b9667d5e281e30",
+  "book_sha256": "66db49c2c4bdfd952521151933bc0a76eab67c050bfa4151139771c115872613",
+  "source_sha256": "1f7ce86ff5f93584052bf580c33ea2534b6b864e61bcb0935bf908c0c53e8092",
+  "field_sha256": "a997487b342997a1945a472c57e5403f23beed73a8c0e5c85a6cd1333fc6604c",
+  "checkpoints": {
+    "control": "f1d8587ce802ae87f0cd241a428de9f5f521f9083cd38fe779a66aca65f0be03",
+    "reader": "2cf3271a0a798436f5c65e361f7690f6b80a86ed3616447215f9f2e4871e8363"
+  }
+}

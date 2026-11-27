@@ -64,3 +64,25 @@ python -m pipeline --model "$SDXL_BASE" \
 모델과 구현에는 SDXL Base, Diffusers, LoRA를 사용했다. 개인화 책 프로젝트의 구성을 초기 아이디어로 참고했다. [SDXL Base](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) · [SDXL 논문](https://arxiv.org/abs/2307.01952) · [Diffusers](https://github.com/huggingface/diffusers) · [LoRA](https://arxiv.org/abs/2106.09685) · [참고한 책 프로젝트](https://github.com/yunseopark-kaist/personalized-book-gen)
 
 개발 중 Codex를 코드 작성, 영문 프롬프트 구상, 구도 시안 제작과 샘플 비교에 사용했다. 구도 시안의 활용 및 자동 영역 조합·인쇄 보정에 관한 수업 측 확인은 아직 남아 있다. [CreativeGen 과제 지침](https://generative-models.kaist.ac.kr/creativegen/#important-notes)
+
+### 실제 인쇄면에서 학습한 영문 활자
+
+팀 데모의 `/print`에서 실행한다. 기존 배경·삽화·책 LoRA가 설치된 환경에서는 다음 명령으로도 재현할 수 있다. OCR 검증에 Tesseract와 영어 언어 데이터가 필요하다.
+
+```bash
+python -m pipeline.printed_spread --model "$SDXL_BASE" --book runs/book_joint_01 \
+  --field checkpoints/print --sentence "A seagull flies just above the surface of the water." \
+  --seed 241125 --output runs/learned-seagull
+```
+
+영문 활자의 획과 폭·높이·간격을 실물 인쇄 줄에서 학습한다. 추론 입력은 문장과 시드다. 생성한 배경·삽화·빈 책은 위치가 정해진 잠재공간 영역에 놓는다. 오른쪽 페이지의 줄바꿈은 학습한 글자 폭으로 계산한다. 종이에서 예측한 잉크 농도를 SDXL 역확산에 조건으로 주고, 최종 잠재값을 VAE로 디코딩해 저장한다. 이 경로는 시스템 폰트를 호출하지 않는다.
+
+```bash
+python -m training.printed_lines download data/prose
+python -m training.printed_lines extract data/prose
+python -m training.line_reader data/prose runs/letter-reader
+python -m training.printed_field run --model "$SDXL_BASE" --book runs/book_joint_01 \
+  --data data/prose --previous runs/letter-reader --output runs/print-comparison
+```
+
+학습에는 9권에서 얻은 1,078줄을 사용했다. 검증 책은 별도로 분리했다. 판독 손실을 켠 모델과 끈 모델을 같은 시드와 역확산 조건에서 비교했으며, 데모는 판독 손실을 끈 체크포인트를 사용한다. 데이터 출처와 권리 확인 절차는 수집 코드에 있다. [인쇄 줄 수집](training/printed_lines.py) · [자체 판독기](training/line_reader.py) · [학습과 평가](training/printed_field.py) · [판독 손실 관련 연구](https://arxiv.org/abs/2311.03054)
