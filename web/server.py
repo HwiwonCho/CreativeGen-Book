@@ -91,9 +91,9 @@ class Jobs:
         return sentence
 
     def create(self, sentence, owner, mode="original"):
-        if mode not in ("original", "learned"):
+        if mode not in ("original", "learned", "ink"):
             raise RequestError(400, "알 수 없는 생성 방식이에요.")
-        learned = mode == "learned"
+        learned = mode in ("learned", "ink")
         sentence = self.page_text(sentence, learned)
         import fcntl
         with self.guard, self.lock_file.open("a+", encoding="ascii") as lock:
@@ -120,6 +120,8 @@ class Jobs:
                 cmd = [sys.executable, "-u", "-m", "pipeline.printed_spread", "--sentence=" + sentence,
                        "--seed", str(seed), "--output", str(job / "result"), "--model", str(self.model),
                        "--book", str(ROOT / "runs/book_joint_01"), "--field", str(ROOT / "checkpoints/print")]
+                if mode == "ink":
+                    cmd.extend(["--ink-response", str(ROOT / "checkpoints/print/ink-response.safetensors")])
             # The child owns the GPU lock even if the web server restarts.
             with (job / "run.log").open("wb") as log:
                 proc = subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=log,
@@ -219,12 +221,15 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         get = self.command == "GET"
         owner = self.cookies()
-        if get and path in ("/", "/print", "/print/", "/classic", "/classic/"):
+        if get and path in ("/", "/print", "/print/", "/classic", "/classic/", "/ink", "/ink/"):
             return self.send_data(200, PAGE.read_bytes(), "text/html; charset=utf-8")
         if get and path in ("/pipeline","/pipeline/"):
             return self.send_data(200, PAGE.with_name("pipeline.html").read_bytes(), "text/html; charset=utf-8")
         if get and path=="/pipeline.webp":
             return self.send_data(200, PAGE.with_name("pipeline.webp").read_bytes(), "image/webp")
+        if get and path in ("/ink-comparison.webp", "/api/example/ink"):
+            asset = "ink-comparison.webp" if path == "/ink-comparison.webp" else "ink-example.webp"
+            return self.send_data(200, PAGE.with_name(asset).read_bytes(), "image/webp")
         if get and path == "/api/health":
             return self.reply(200, dict(service="creativegen-book", authenticated=bool(owner)))
         if get and path in ("/api/example", "/api/example/background"):

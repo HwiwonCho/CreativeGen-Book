@@ -136,9 +136,19 @@
   <script>
     "use strict";
     const $ = id => document.getElementById(id);
-    const learnedPrint = location.pathname.replace(/\/$/, "") !== "/classic";
-    const jobKey = learnedPrint ? "creativegen.print.job" : "creativegen.book.job";
-    if (learnedPrint) $("title").textContent = "실제 활자를 학습한 책";
+    const route = location.pathname.replace(/\/$/, "");
+    const mode = route === "/ink" ? "ink" : route === "/classic" ? "original" : "learned";
+    const jobKey = {ink: "creativegen.ink.job", learned: "creativegen.print.job", original: "creativegen.book.job"}[mode];
+    if (mode === "learned") $("title").textContent = "실제 활자를 학습한 책";
+    if (mode === "ink") {
+      $("title").textContent = "종이와 잉크 실험";
+      const intro = document.querySelector(".intro");
+      intro.textContent = "실제 책에서 학습한 모델이 종이색과 글자의 획을 보고 인쇄 농도를 정해요. ";
+      const examples = document.createElement("a");
+      examples.href = "/ink-comparison.webp";
+      examples.textContent = "기존 인쇄와 비교";
+      intro.append(examples);
+    }
     const stages = {
       starting: ["모델을 준비하고 있어요.", 0],
       background: ["배경을 그리고 있어요.", 0],
@@ -299,7 +309,7 @@
       controls();
       notice("생성을 요청하고 있어요.");
       try {
-        const job = await api("/api/jobs", {sentence, mode: learnedPrint ? "learned" : "original"});
+        const job = await api("/api/jobs", {sentence, mode});
         remember(job.id);
         render(job);
       } catch (error) {
@@ -320,7 +330,7 @@
       const invite = fragment.get("invite");
       if (invite !== null) history.replaceState(history.state, "", location.pathname + location.search);
       showBackground("/api/example/background", "갈매기가 수면 위를 나는 문장으로 생성한 배경");
-      $("book").src = learnedPrint ? "/api/example/print" : "/api/example";
+      $("book").src = {ink: "/api/example/ink", learned: "/api/example/print", original: "/api/example"}[mode];
       if (invite !== null) {
         const invalid = "초대 링크가 만료되었거나 유효하지 않아요. 팀 접속 코드로 접속해 주세요.";
         if (!/^[a-f0-9]{32}$/i.test(invite)) return needLogin(invalid);

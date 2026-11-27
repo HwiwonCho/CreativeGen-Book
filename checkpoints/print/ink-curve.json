@@ -1,0 +1,59 @@
+{
+  "books": [
+    "adventuresoftoms00twaiiala",
+    "birdsofnorfolkwi01stev",
+    "buddhistbirth00daviuoft",
+    "handbookoffieldg00coue",
+    "historyofbritish1828flem",
+    "historyofcoggesh00beauuoft",
+    "musicofwaterscol00smituoft",
+    "newforestitshist00wiseuoft",
+    "strangestoriesfr00pusuuoft"
+  ],
+  "crops": {
+    "adventuresoftoms00twaiiala": 850,
+    "birdsofnorfolkwi01stev": 849,
+    "buddhistbirth00daviuoft": 848,
+    "handbookoffieldg00coue": 850,
+    "historyofbritish1828flem": 844,
+    "historyofcoggesh00beauuoft": 847,
+    "musicofwaterscol00smituoft": 849,
+    "newforestitshist00wiseuoft": 850,
+    "strangestoriesfr00pusuuoft": 848
+  },
+  "bandwidth": 0.035,
+  "leave_one_book_out": {
+    "0.035": 0.16855335732301077,
+    "0.12": 0.16915022830168405,
+    "10.0": 0.1696327825387319
+  },
+  "scores": {
+    "validation": {
+      "fixed": {
+        "all": 0.16322004795074463,
+        "core": 0.2075439840555191,
+        "edge": 0.1578282117843628
+      },
+      "learned": {
+        "all": 0.15900863707065582,
+        "core": 0.19829480350017548,
+        "edge": 0.15520277619361877
+      }
+    },
+    "test": {
+      "fixed": {
+        "all": 0.16010135412216187,
+        "core": 0.19352379441261292,
+        "edge": 0.1628085970878601
+      },
+      "learned": {
+        "all": 0.16435302793979645,
+        "core": 0.20208463072776794,
+        "edge": 0.1664961278438568
+      }
+    }
+  },
+  "field_sha256": "f1d8587ce802ae87f0cd241a428de9f5f521f9083cd38fe779a66aca65f0be03",
+  "lines_sha256": "9515371efd3f93b03940d9c68eb51ba339b0161947ddd8ae19b9667d5e281e30",
+  "weights_sha256": "1f36891b5b8239c935c3d21e2ab455caa63e34a3788ef10c16a37e0289d61d4e"
+}

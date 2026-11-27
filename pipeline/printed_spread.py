@@ -13,6 +13,7 @@ from safetensors.torch import load_file
 
 from architecture.approved_base import file_digest, verify_base
 from architecture.page_locator import PageLocator
+from architecture.ink_response import load_response
 from pipeline.page_scene import blank_scene as sample_blank, page_grid, project_art, quad_size, text_density
 from architecture.printed_field import PrintedField, character_ids
 from training.line_text import distance, embeddings, load_pipe, rgb, tensor
@@ -142,8 +143,18 @@ def run(args):
     blank_rgb=pipe.vae.decode(blank_scene/pipe.vae.config.scaling_factor).sample.clamp(-1,1)
     rgb(blank_rgb[0]).save(output/"blank-scene.png")
     density,read_grid,lines=text_density(field,text,right,h,w,layout["text_region"],paragraph)
-    attenuation=(1-field.ink/field.paper.clamp_min(.1)).clamp(0,1)[None,:,None,None]
-    zprior=encode(pipe,(blank_rgb+1)*(1-density*attenuation)-1)
+    response_path=getattr(args,"ink_response",None)
+    if response_path is None:
+        attenuation=(1-field.ink/field.paper.clamp_min(.1)).clamp(0,1)[None,:,None,None]
+        print_rgb=(blank_rgb+1)*(1-density*attenuation)-1
+    else:
+        ink_fit=json.loads(response_path.with_suffix(".json").read_text())
+        if (ink_fit["weights_sha256"]!=file_digest(response_path)
+                or ink_fit["field_sha256"]!=fit["checkpoints"][name]):
+            raise ValueError("Ink response and character field do not match the training record")
+        response=load_response(load_file(str(response_path))).to(blank_rgb.device).eval()
+        print_rgb=2*response((blank_rgb+1)/2,density)-1
+    zprior=encode(pipe,print_rgb)
     print_prompt="A photograph of an open illustrated book with real ink printed on the paper. The passage reads: "+text
     final=diffuse(pipe,blank_scene,zprior,print_prompt,seed+1,24,12,weight)
     decoded=pipe.vae.decode(final/pipe.vae.config.scaling_factor).sample
@@ -161,6 +172,7 @@ def run(args):
                 locator_sha256=layout["marker_sha256"]),weight=weight,scene_reverse_steps=11,print_reverse_steps=12,
                 post_decode_pixel_edits=0,final_sha256=file_digest(output/"final.png"),code_sha256=file_digest(__file__),
                 geometry_code_sha256=file_digest(Path(__file__).with_name("page_scene.py")))
+    report["ink_response_sha256"]=file_digest(response_path) if response_path else None
     (output/"result.json").write_text(json.dumps(report,indent=2))
     print(report,flush=True)
 
@@ -221,6 +233,7 @@ if __name__=="__main__":
     source.add_argument("--sentence")
     parser.add_argument("--seed",type=int,default=241125)
     parser.add_argument("--variant",choices=("reader","control"),default="control")
+    parser.add_argument("--ink-response",type=Path)
     args=parser.parse_args()
     if args.scene is None:
         generate_from_sentence(args)

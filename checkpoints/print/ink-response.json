@@ -1,0 +1,134 @@
+{
+  "step": 200,
+  "validation_history": [
+    {
+      "step": 100,
+      "validation": {
+        "fixed": {
+          "all": 0.16322004795074463,
+          "core": 0.2075439840555191,
+          "edge": 0.1578282117843628
+        },
+        "learned": {
+          "all": 0.15734317898750305,
+          "core": 0.18546929955482483,
+          "edge": 0.15803395211696625
+        }
+      }
+    },
+    {
+      "step": 200,
+      "validation": {
+        "fixed": {
+          "all": 0.16322004795074463,
+          "core": 0.2075439840555191,
+          "edge": 0.1578282117843628
+        },
+        "learned": {
+          "all": 0.15587569773197174,
+          "core": 0.1847916543483734,
+          "edge": 0.15567882359027863
+        }
+      }
+    },
+    {
+      "step": 300,
+      "validation": {
+        "fixed": {
+          "all": 0.16322004795074463,
+          "core": 0.2075439840555191,
+          "edge": 0.1578282117843628
+        },
+        "learned": {
+          "all": 0.15718349814414978,
+          "core": 0.18156090378761292,
+          "edge": 0.1589624583721161
+        }
+      }
+    },
+    {
+      "step": 400,
+      "validation": {
+        "fixed": {
+          "all": 0.16322004795074463,
+          "core": 0.2075439840555191,
+          "edge": 0.1578282117843628
+        },
+        "learned": {
+          "all": 0.15733039379119873,
+          "core": 0.1827498972415924,
+          "edge": 0.15868304669857025
+        }
+      }
+    },
+    {
+      "step": 500,
+      "validation": {
+        "fixed": {
+          "all": 0.16322004795074463,
+          "core": 0.2075439840555191,
+          "edge": 0.1578282117843628
+        },
+        "learned": {
+          "all": 0.1582750678062439,
+          "core": 0.1889210194349289,
+          "edge": 0.1576719880104065
+        }
+      }
+    },
+    {
+      "step": 600,
+      "validation": {
+        "fixed": {
+          "all": 0.16322004795074463,
+          "core": 0.2075439840555191,
+          "edge": 0.1578282117843628
+        },
+        "learned": {
+          "all": 0.1578710973262787,
+          "core": 0.17973528802394867,
+          "edge": 0.1607571244239807
+        }
+      }
+    }
+  ],
+  "test": {
+    "fixed": {
+      "all": 0.16010135412216187,
+      "core": 0.19352379441261292,
+      "edge": 0.1628085970878601
+    },
+    "learned": {
+      "all": 0.1691264659166336,
+      "core": 0.21270301938056946,
+      "edge": 0.1694694608449936
+    }
+  },
+  "books": {
+    "train": [
+      "adventuresoftoms00twaiiala",
+      "birdsofnorfolkwi01stev",
+      "buddhistbirth00daviuoft",
+      "handbookoffieldg00coue",
+      "historyofbritish1828flem",
+      "historyofcoggesh00beauuoft",
+      "musicofwaterscol00smituoft",
+      "newforestitshist00wiseuoft",
+      "strangestoriesfr00pusuuoft"
+    ],
+    "validation": [
+      "goldsmithshistor00golduoft"
+    ],
+    "test": [
+      "adventuresofsher00doylrich"
+    ]
+  },
+  "crops": {
+    "train": 6491,
+    "validation": 1194,
+    "test": 1596
+  },
+  "field_sha256": "f1d8587ce802ae87f0cd241a428de9f5f521f9083cd38fe779a66aca65f0be03",
+  "lines_sha256": "9515371efd3f93b03940d9c68eb51ba339b0161947ddd8ae19b9667d5e281e30",
+  "weights_sha256": "a697104358bc5d7f421c89319c749c81f1750d8e7619a542614fccd8dfa1fcf1"
+}
