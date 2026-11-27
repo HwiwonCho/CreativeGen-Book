@@ -219,8 +219,12 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         get = self.command == "GET"
         owner = self.cookies()
-        if get and path in ("/", "/print", "/print/"):
+        if get and path in ("/", "/print", "/print/", "/classic", "/classic/"):
             return self.send_data(200, PAGE.read_bytes(), "text/html; charset=utf-8")
+        if get and path in ("/pipeline","/pipeline/"):
+            return self.send_data(200, PAGE.with_name("pipeline.html").read_bytes(), "text/html; charset=utf-8")
+        if get and path=="/pipeline.webp":
+            return self.send_data(200, PAGE.with_name("pipeline.webp").read_bytes(), "image/webp")
         if get and path == "/api/health":
             return self.reply(200, dict(service="creativegen-book", authenticated=bool(owner)))
         if get and path in ("/api/example", "/api/example/background"):

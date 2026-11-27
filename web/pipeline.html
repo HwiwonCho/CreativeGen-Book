@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>책이 만들어지는 과정 · CreativeGen</title>
+<style>
+:root{color-scheme:light;font:16px/1.65 system-ui,sans-serif;color:#202f28;background:#f7f6ef}
+*{box-sizing:border-box}body{max-width:1120px;margin:auto;padding:0 20px 48px}header{display:flex;justify-content:space-between;align-items:center;padding:17px 0;border-bottom:1px solid #c8cec4}header strong{font:600 25px Georgia,serif;letter-spacing:-.04em}a{color:#255443;text-underline-offset:4px}figure{margin:22px 0 8px}img{width:100%;height:auto;display:block}figcaption{margin-top:8px}details{border-top:1px solid #c8cec4;margin-top:22px;padding-top:14px}summary{cursor:pointer;font-weight:650}li{margin:.6rem 0}h1{font-size:1.4rem;margin:20px 0 0}@media(min-width:650px){h1{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}}
+</style></head><body>
+<header><strong lang="en">CreativeGen</strong><a href="/">책 생성하기</a></header>
+<main><h1>책이 만들어지는 과정</h1>
+<figure><a href="/pipeline.webp" aria-label="생성 과정 그림 원본 열기"><img src="/pipeline.webp" width="1360" height="1150" alt="배경·삽화·빈 책을 생성하고, 검출한 두 페이지에 삽화와 영문 활자를 조건으로 역확산하는 과정. 아래에 단계별 설명이 있습니다."></a>
+<figcaption><a href="/pipeline.webp">그림 확대</a>　<a href="/api/example/print">완성된 갈매기 책 원본</a></figcaption></figure>
+<details open><summary>모델과 계산이 맡은 역할</summary><ol>
+<li><strong>독립 생성.</strong> 고정 지시문에 사용자의 문장을 더해 배경과 삽화를 각각 SDXL과 자체 LoRA로 생성한다. 빈 책은 별도의 지시문과 시드로 전체 장면을 생성한다.</li>
+<li><strong>페이지 검출.</strong> 자체 학습한 모델이 종이 윤곽, 좌우 모서리와 가운데 접힌 선의 양 끝을 찾는다. 검출 결과의 일관성·면적이 검증 범위를 벗어나면 새 시드로 빈 책을 다시 생성한다.</li>
+<li><strong>장면 생성.</strong> 검출한 왼쪽 면에 삽화를 원근 투영하고 책 윤곽으로 배경과 종이를 결합해 역확산의 입력을 만든다. SDXL이 11회 역확산해 인쇄 전 장면을 생성한다.</li>
+<li><strong>본문 인쇄.</strong> 실제 책에서 학습한 활자 모델이 획과 폭·간격을 예측한다. 단어 단위 줄바꿈과 원근 투영으로 오른쪽 면의 잉크 조건을 만들고, 종이색과 함께 VAE로 인코딩해 12회 역확산에 반영한다.</li>
+<li><strong>출력과 평가.</strong> 마지막 잠재값을 VAE로 디코딩한 사진을 저장한다. OCR은 완성 사진에서 본문을 읽어 입력 문장과 대조한다.</li>
+</ol></details></main></body></html>

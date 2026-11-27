@@ -67,7 +67,7 @@ python -m pipeline --model "$SDXL_BASE" \
 
 ### 실제 인쇄면에서 학습한 영문 활자
 
-팀 데모의 `/print`에서 실행한다. 기존 배경·삽화·책 LoRA가 설치된 환경에서는 다음 명령으로도 재현할 수 있다. OCR 검증에 Tesseract와 영어 언어 데이터가 필요하다.
+팀 데모의 `/`와 `/print`에서 실행한다. `/pipeline`에서 실제 중간 이미지와 생성 도식을 볼 수 있다. 기존 배경·삽화·책 LoRA가 설치된 환경에서는 다음 명령으로도 재현할 수 있다. OCR 검증에 Tesseract와 영어 언어 데이터가 필요하다.
 
 ```bash
 python -m pipeline.printed_spread --model "$SDXL_BASE" --book runs/book_joint_01 \
@@ -75,12 +75,13 @@ python -m pipeline.printed_spread --model "$SDXL_BASE" --book runs/book_joint_01
   --seed 241125 --output runs/learned-seagull
 ```
 
-영문 활자의 획과 폭·높이·간격을 실물 인쇄 줄에서 학습한다. 추론 입력은 문장과 시드다. 생성한 배경·삽화·빈 책은 위치가 정해진 잠재공간 영역에 놓는다. 오른쪽 페이지의 줄바꿈은 학습한 글자 폭으로 계산한다. 종이에서 예측한 잉크 농도를 SDXL 역확산에 조건으로 주고, 최종 잠재값을 VAE로 디코딩해 저장한다. 이 경로는 시스템 폰트를 호출하지 않는다.
+영문 활자의 획과 폭·높이·간격을 실물 인쇄 줄에서 학습한다. 추론 입력은 문장과 시드다. SDXL이 전체 화면에 빈 책을 생성하고 자체 학습한 검출기가 종이 영역과 양쪽 페이지의 여섯 기준점을 추정한다. 윤곽과 모서리의 일치도 및 종이 면적이 검증 범위를 벗어나면 시드를 바꾸어 최대 여섯 후보를 검사한다. 학습 도서의 인쇄 여백을 기준으로 왼쪽 삽화와 오른쪽 글을 원근 투영한다. 좌우 페이지 역할, 단어 단위 줄바꿈, 종이·잉크의 광학 결합, 역확산 설정은 알고리즘으로 정한다. 프레임별 시드와 검출값은 결과 폴더의 `spread/result.json`에 남는다.
 
 ```bash
 python -m training.printed_lines download data/prose
 python -m training.printed_lines extract data/prose
 python -m training.line_reader data/prose runs/letter-reader
+python -m training.page_locator --data data --output runs/page-locator
 python -m training.printed_field run --model "$SDXL_BASE" --book runs/book_joint_01 \
   --data data/prose --previous runs/letter-reader --output runs/print-comparison
 ```

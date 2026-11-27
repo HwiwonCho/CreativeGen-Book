@@ -1,0 +1,51 @@
+{
+  "validation": [
+    {
+      "step": 250,
+      "corner_error": 0.007013089023530483,
+      "iou": 0.9654130935668945
+    },
+    {
+      "step": 500,
+      "corner_error": 0.00557688158005476,
+      "iou": 0.9749319553375244
+    },
+    {
+      "step": 750,
+      "corner_error": 0.007695004343986511,
+      "iou": 0.968843936920166
+    },
+    {
+      "step": 1000,
+      "corner_error": 0.004579824395477772,
+      "iou": 0.9768658876419067
+    },
+    {
+      "step": 1250,
+      "corner_error": 0.0045226020738482475,
+      "iou": 0.9781119227409363
+    },
+    {
+      "step": 1300,
+      "corner_error": 0.004714339971542358,
+      "iou": 0.9779635071754456
+    }
+  ],
+  "train_books": 21,
+  "validation_books": 6,
+  "train_backgrounds": 48,
+  "validation_backgrounds": 12,
+  "validation_compositions": 128,
+  "seed": 11726,
+  "text_region": [
+    0.1399999999999999,
+    0.812280701754386,
+    0.4765625
+  ],
+  "marker_sha256": "516cc4950e3aab04f5b212de98aa66da7ba3fe13eae9bd5f7525dd914fcedad0",
+  "bounds": {
+    "min_agreement": 0.9470845633745193,
+    "min_area": 0.292236330807209,
+    "max_area": 0.793037109375
+  }
+}

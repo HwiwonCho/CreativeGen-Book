@@ -6,15 +6,14 @@ from pathlib import Path
 import subprocess
 import sys
 
-import numpy as np
-from PIL import Image, ImageFilter
+from PIL import Image
 import torch
 from torch.nn import functional as F
 from safetensors.torch import load_file
 
 from architecture.approved_base import file_digest, verify_base
-from architecture.adapters import load_book_conditioner
-from architecture.book_conditioner import condition_unet
+from architecture.page_locator import PageLocator
+from pipeline.page_scene import blank_scene as sample_blank, page_grid, project_art, quad_size, text_density
 from architecture.printed_field import PrintedField, character_ids
 from training.line_text import distance, embeddings, load_pipe, rgb, tensor
 
@@ -63,18 +62,6 @@ def paragraph(field, text, width, available):
 
 def encode(pipe, x):
     return pipe.vae.encode(x).latent_dist.mode() * pipe.vae.config.scaling_factor
-
-
-def paper_silhouette(blank):
-    from scipy.ndimage import binary_fill_holes
-    gray=np.asarray(blank.convert("L"))
-    hist=np.bincount(gray.flatten(), minlength=256).astype(float)
-    mass=hist.cumsum()
-    moments=(hist*np.arange(256)).cumsum()
-    variance=(moments[-1]*mass-moments*mass[-1])**2 / np.maximum(mass*(mass[-1]-mass),1.)
-    threshold=int(variance.argmax())
-    inside=binary_fill_holes(gray>threshold)
-    return Image.fromarray((inside*255).astype("uint8")).filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(1.0))
 
 
 def diffuse(pipe, source, prior, text, seed, steps, active, weight):
@@ -133,64 +120,47 @@ def run(args):
     output=args.output
     output.mkdir(parents=True,exist_ok=False)
     seed=manifest["plan"]["seed"]
-    book_seed=manifest["plan"]["stages"]["book"]["seed"]
-    bw,bh=896,672
-    mask=torch.zeros((2,2,bh,bw),device="cuda")
-    mask[:,1,190:580,448:744]=1
-    conditioner=load_book_conditioner(pipe.unet,args.book).cuda().eval()
-    blank_prompt="Overhead photograph of a flat open book, both facing pages blank and unprinted, bare paper and a central binding."
-    with condition_unet(pipe.unet,conditioner(mask)):
-        blank_z=pipe(prompt=blank_prompt,negative_prompt="text, writing, illustration, letters, hands",
-                     width=bw,height=bh,num_inference_steps=32,guidance_scale=6.,
-                     generator=torch.Generator().manual_seed(book_seed),output_type="latent").images.float()
-    blank=rgb(pipe.vae.decode(blank_z/pipe.vae.config.scaling_factor).sample[0])
-    blank.save(output/"blank-book.png")
-    matte=paper_silhouette(blank)
-    frame="otsu_generated_book"
+    layout=json.loads((args.field/"locator.json").read_text())
+    if file_digest(args.field/"locator.safetensors")!=layout["marker_sha256"]:
+        raise ValueError("Incompatible page locator")
+    locator=PageLocator().cuda().eval()
+    locator.load_state_dict(load_file(str(args.field/"locator.safetensors")))
+    stock,matte,points,trials=sample_blank(pipe,locator,seed,layout["bounds"])
+    rgb(stock[0]*2-1).save(output/"blank-book.png")
     w,h=1440,960
-    x0,y0,x1,y1=216,104,1224,856
-    rect=(x1-x0,y1-y0)
-    def pixels(image, size):
-        return tensor(image.resize(size,Image.Resampling.LANCZOS)).cuda()[None]
-    bg=encode(pipe,pixels(refs["background"],(w,h)))
-    page=encode(pipe,pixels(blank,rect))
-    init=bg.clone()
-    ph,pw=page.shape[-2:]
-    roi=(...,slice(y0//8,y0//8+ph),slice(x0//8,x0//8+pw))
-    m=torch.from_numpy(np.array(matte.resize((pw,ph),Image.Resampling.BILINEAR))).cuda()[None,None].float()/255
-    init[roi]=torch.lerp(init[roi],page,m)
-    ax,ay,aw=272,288,384
-    art_roi=(...,slice(ay//8,(ay+aw)//8),slice(ax//8,(ax+aw)//8))
-    art=encode(pipe,pixels(refs["illustration"],(aw,aw)))
-    init[art_roi]=art
+    paper=F.interpolate(stock,(h,w),mode="bilinear",align_corners=False)
+    alpha=F.interpolate(matte,(h,w),mode="bilinear",align_corners=False)
+    bg=(tensor(refs["background"].resize((w,h),Image.Resampling.LANCZOS)).cuda()[None]+1)/2
+    art=(tensor(refs["illustration"]).cuda()[None]+1)/2
+    left,right=points[[0,1,3,4]],points[[1,2,4,5]]
+    colors,visible=project_art(art,page_grid(left,h,w),*quad_size(left,h,w),layout["text_region"])
+    paper=paper*torch.where(visible,colors,1.)
+    init=encode(pipe,torch.lerp(bg,paper,alpha)*2-1)
     scene_prompt=("Overhead photograph of an open illustrated book, a single engraving on the left, a blank cream page on the right. "
                   "The setting and the engraving depict: "+text)
     blank_scene=diffuse(pipe,init,init,scene_prompt,seed,24,11,.28)
     blank_rgb=pipe.vae.decode(blank_scene/pipe.vae.config.scaling_factor).sample.clamp(-1,1)
     rgb(blank_rgb[0]).save(output/"blank-scene.png")
-    lx,lw=752,424
-    lines,line_h=paragraph(field,text,lw,(y1-y0)*.85)
-    block_h=len(lines)*line_h
-    ly=8*round(((y0+y1-block_h)/2)/8)
+    density,read_grid,lines=text_density(field,text,right,h,w,layout["text_region"],paragraph)
     attenuation=(1-field.ink/field.paper.clamp_min(.1)).clamp(0,1)[None,:,None,None]
-    alpha=torch.cat([field.coverage(line,line_h,lw) for line in lines],dim=-2)
-    # Compute the optical-density change on the generated local paper, in the conditioning branch only.
-    density=F.pad(alpha,(lx,w-lx-lw,ly,h-ly-block_h))
     zprior=encode(pipe,(blank_rgb+1)*(1-density*attenuation)-1)
     print_prompt="A photograph of an open illustrated book with real ink printed on the paper. The passage reads: "+text
     final=diffuse(pipe,blank_scene,zprior,print_prompt,seed+1,24,12,weight)
-    image=rgb(pipe.vae.decode(final/pipe.vae.config.scaling_factor).sample[0])
+    decoded=pipe.vae.decode(final/pipe.vae.config.scaling_factor).sample
+    image=rgb(decoded[0])
     image.save(output/"final.png")
-    crop=(lx-8,ly-8,lx+lw+8,ly+block_h+8)
-    observed=image.crop(crop)
+    def straighten(value):
+        return rgb(F.grid_sample(value,read_grid[None]*2-1,align_corners=False,padding_mode="border")[0])
+    observed=straighten(decoded)
     observed.save(output/"detail.png")
     read=transcribe(observed)
-    blank_read=transcribe(rgb(blank_rgb[0]).crop(crop))
+    blank_read=transcribe(straighten(blank_rgb))
     report=dict(sentence=text,ocr=read,exact=read==text,cer=distance(text,read)/len(text),blank_ocr=blank_read,
-                print_lines=lines,seed=seed,book_seed=book_seed,base=base,variant=name,field_sha256=fit["checkpoints"][name],
-                references={k:manifest["results"][k]["sha256"] for k in refs},frame=frame,layout=dict(book=[x0,y0,x1,y1],
-                art=[ax,ay,aw],text=crop),weight=weight,scene_reverse_steps=11,print_reverse_steps=12,
-                post_decode_pixel_edits=0,final_sha256=file_digest(output/"final.png"),code_sha256=file_digest(__file__))
+                print_lines=lines,seed=seed,book_seed=trials[-1]["seed"],base=base,variant=name,field_sha256=fit["checkpoints"][name],
+                references={k:manifest["results"][k]["sha256"] for k in refs},layout=dict(trials=trials,points=points.tolist(),
+                locator_sha256=layout["marker_sha256"]),weight=weight,scene_reverse_steps=11,print_reverse_steps=12,
+                post_decode_pixel_edits=0,final_sha256=file_digest(output/"final.png"),code_sha256=file_digest(__file__),
+                geometry_code_sha256=file_digest(Path(__file__).with_name("page_scene.py")))
     (output/"result.json").write_text(json.dumps(report,indent=2))
     print(report,flush=True)
 
@@ -207,15 +177,11 @@ def generate_from_sentence(args):
     character_ids(text)
     if set(text).intersection(params["unseen_training_characters"]):
         raise ValueError("The passage contains a character absent from print training")
-    verifier=PrintedField().eval()
-    verifier.load_state_dict(load_file(str(args.field/f"{args.variant}.safetensors")))
-    with torch.inference_mode():
-        paragraph(verifier,text,424,639)
     out=args.output
     out.mkdir(parents=True,exist_ok=False)
     manifest=out/"manifest.json"
     plan=dict(sentence=text,seed=args.seed,size=768,steps=32,guidance=6.,model=str(args.model.resolve()),
-              base_manifest_sha256=verify_base(args.model),stages={"book":{"seed":241126}})
+              base_manifest_sha256=verify_base(args.model),stages={})
     state=dict(plan=plan,results={},active="starting",status="running")
     try:
         for module in ("background","illustration"):
